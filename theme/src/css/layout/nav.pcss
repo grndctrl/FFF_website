@@ -5,7 +5,7 @@
     @apply fixed w-full h-screen flex flex-col bg-gray-600 text-white;
     top: 0;
     left: 100vw;
-    padding: calc($header-height + $site-offset) $site-offset;
+    padding: calc($header-height + $site-offset-sm) $site-offset-sm;
     .nav-menu-item {
       @apply ml-0;
     }
@@ -63,6 +63,8 @@
   .nav-main {
     .nav-menu {
       @apply relative w-auto h-auto inset-auto flex-row p-0 bg-transparent text-black;
+      padding: calc($header-height + $site-offset-lg) $site-offset-lg;
+
       .nav-menu-item {
         @apply ml-4;
       }

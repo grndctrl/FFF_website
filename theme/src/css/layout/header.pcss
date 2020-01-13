@@ -8,13 +8,25 @@
 
 .header-main {
   @apply bg-transparent;
-  padding-bottom: calc($site-offset / 2);
-  padding-top: calc($site-offset * 2);
+  padding-bottom: calc($site-offset-sm / 2);
+  padding-top: calc($site-offset-sm * 2);
   transition: $short ease;
   
 
   &.pinned {
     @apply bg-white;
-    padding-top: $site-offset;
+    padding-top: $site-offset-sm;
+  }
+}
+
+@screen lg {
+  .header-main {
+    padding-bottom: calc($site-offset-lg / 2);
+    padding-top: calc($site-offset-lg * 2);
+    
+
+    &.pinned {
+      padding-top: $site-offset-lg;
+    }
   }
 }

@@ -6,6 +6,11 @@ class Slider extends CoreModule {
     this.sliders = document.querySelectorAll('.slider')
     this.swipers = []
 
+    let gutter = 44
+    if (window.innerWidth < 1024) {
+      gutter = 12
+    }
+
     this.sliders.forEach((slider) => {
       let swiper
 
@@ -14,7 +19,7 @@ class Slider extends CoreModule {
           slidesPerView: 'auto',
           loop: false,
           centeredSlides: true,
-          spaceBetween: 44,
+          spaceBetween: gutter,
           navigation: {
             nextEl: '.slider-button-next',
             prevEl: '.slider-button-prev',
@@ -25,7 +30,7 @@ class Slider extends CoreModule {
           slidesPerView: 1,
           loop: true,
           centeredSlides: true,
-          spaceBetween: 44,
+          spaceBetween: gutter,
           navigation: {
             nextEl: '.slider-button-next',
             prevEl: '.slider-button-prev',

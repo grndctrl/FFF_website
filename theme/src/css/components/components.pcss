@@ -21,3 +21,12 @@ table {
     @apply border-b border-gray-300
   }
 }
+
+.custom-col {
+  width: calc((100vw - (2 * $site-offset)) * 1);
+  height: calc((100vw - (2 * $site-offset)) * 0.5507246);
+
+  &.margin {
+    width: calc(((100vw - (2 * $site-offset) + $gutter) * 0.83333) - $gutter);
+  }
+}

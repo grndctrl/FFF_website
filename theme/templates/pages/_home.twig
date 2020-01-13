@@ -1,0 +1,83 @@
+{# Default page #}
+
+{% extends "core/base.twig" %}
+
+{% block main %}
+
+  <section class="section header-offset"></section>
+
+  <section class="">
+    <div class="container">
+      <div class="row">
+        <div class="col w-full">
+          <div class="bg-blue-500 h-24"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="">
+    <div class="custom-col mx-auto">
+      <div class="bg-red-500 h-24">
+      </div>
+    </div>
+  </section>
+
+  <section class="">
+    <div class="container">
+      <div class="row">
+        <div class="col w-10/12 mx-auto">
+          <div class="bg-blue-300 h-24"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="">
+    <div class="custom-col mx-auto margin">
+      <div class="bg-red-300 h-24">
+      </div>
+    </div>
+  </section>
+
+  {% include "blocks/text-h3.twig" %}
+
+  {% include "blocks/text-h1.twig" %}
+
+  {% include "blocks/text-h2.twig" %}
+
+  {% include "blocks/text-h2.twig" with {
+    subtitle: 'subtitel'
+  } %}
+
+  {% include "blocks/text-details.twig" %}
+
+  {% include "blocks/text-paragraph.twig" %}
+
+  {% include "blocks/text-thin-paragraph.twig" %}
+
+  {% include "blocks/text-quote.twig" %}
+
+  {% include "blocks/image.twig" with {
+    size : "wide"
+  } %}
+
+  {% include "blocks/image.twig" with {
+    size : "full"
+  } %}
+
+  {% include "blocks/image.twig" with {
+    size : "margin"
+  } %}
+
+  {% include "blocks/slider.twig" with {} %}
+
+  {% include "blocks/slider-full.twig" with { 
+
+  } %}
+
+  {% include "blocks/image.twig" with {
+    size : "margin"
+  } %}
+
+{% endblock %}

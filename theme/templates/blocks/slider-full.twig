@@ -1,0 +1,40 @@
+<section class="py-12">
+
+  <!-- Slider main container -->
+  <div class="slider full swiper-container">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      <div class="swiper-slide margin">
+        <div class="w-full">
+          {% include "components/figure.twig" with {
+            figureClass : "margin"
+          } %}
+        </div>
+      </div>
+      <div class="swiper-slide margin">
+        <div class="w-full">
+          {% include "components/figure.twig" with {
+            figureClass : "margin"
+          } %}
+        </div>
+      </div>
+      <div class="swiper-slide margin">
+        <div class="w-full">
+          {% include "components/figure.twig" with {
+            figureClass : "margin"
+          } %}
+        </div>
+      </div>
+    </div>
+
+    <!-- If we need navigation buttons -->
+    <div class="slider-button-prev">
+      {% include "svg/arrow-left.twig" %}
+    </div>
+    <div class="slider-button-next">
+      {% include "svg/arrow-right.twig" %}
+    </div>
+  </div>
+
+</section>

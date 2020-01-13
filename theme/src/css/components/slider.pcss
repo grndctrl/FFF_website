@@ -1,0 +1,42 @@
+.slider {
+  .slider-button-prev,
+  .slider-button-next {
+    @apply absolute;
+    top: 50%;
+    margin-top: -17px;
+    z-index: +1;
+    opacity: 1;
+    transition: opacity $short ease;
+
+    &.swiper-button-disabled {
+      opacity: 0;
+      cursor: auto;
+    }
+  }
+
+  .slider-button-prev {
+    margin-left: $site-offset;
+    left: 0;
+  }
+
+  .slider-button-next {
+    margin-right: $site-offset;
+    right: 0;
+  }
+
+  &.full {
+    .slider-button-prev {
+      margin-left: calc(((100vw - (2 * $site-offset) + $gutter) * 0.166667) - $gutter);
+    }
+
+    .slider-button-next {
+      margin-right: calc(((100vw - (2 * $site-offset) + $gutter) * 0.16667) - $gutter);
+    }
+  }
+}
+
+.swiper-slide {
+  &.margin {
+    width: calc(((100vw - (2 * $site-offset) + $gutter) * 0.83333) - $gutter);
+  }
+}

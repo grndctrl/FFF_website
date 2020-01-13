@@ -1,0 +1,38 @@
+<section class="py-12">
+<div class="container">
+
+<!-- Slider main container -->
+<div class="slider swiper-container">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide">
+        <div class="w-full">
+            {% include "components/figure.twig" with {
+                figureClass: 'wide'
+            } %}
+        </div>
+        </div>
+        <div class="swiper-slide opacity-75">
+            {% include "components/figure.twig" with {
+                figureClass: 'wide'
+            } %}
+        </div>
+        <div class="swiper-slide opacity-50">
+            {% include "components/figure.twig" with {
+                figureClass: 'wide'
+            } %}
+        </div>
+    </div>
+
+    <!-- If we need navigation buttons -->
+    <div class="slider-button-prev">
+        {% include "svg/arrow-left.twig" %}
+    </div>
+    <div class="slider-button-next">
+        {% include "svg/arrow-right.twig" %}
+    </div>
+</div>
+
+</div>
+</section>

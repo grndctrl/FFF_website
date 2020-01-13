@@ -4,7 +4,7 @@ import 'zenscroll'
 
 import { core } from './js/core'
 import { header, nav, barbaManager } from './js/layout'
-import { dummyModule, images } from './js/components'
+import { slider, images } from './js/components'
 import { animMoveIn, animFadeIn } from './js/animations'
 
 ;(function() {
@@ -13,9 +13,9 @@ import { animMoveIn, animFadeIn } from './js/animations'
   core.attach(barbaManager)
 
   core.attach(images, {}, true)
-  core.attach(dummyModule, {}, true)
+  core.attach(slider, {}, true)
 
-  core.attach(animMoveIn, { target: '.section' }, true)
+  core.attach(animMoveIn, { target: '.anim-move-in' }, true)
   core.attach(animFadeIn, {}, true)
 
   core.init()

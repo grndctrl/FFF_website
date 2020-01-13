@@ -1,4 +1,4 @@
 import { images } from './images'
-import { dummyModule } from './dummy-module'
+import { slider } from './slider'
 
-export { images, dummyModule }
+export { images, slider }

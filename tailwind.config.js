@@ -1,14 +1,31 @@
 module.exports = {
   theme: {
     fontFamily: {
-      sans: 'Inter, sans-serif',
+      sans: 'BasisGrotesquePro, sans-serif',
+    },
+    fontSize: {
+      xs: '0.75rem',
+      sm: '0.875rem',    // sub
+      base: '1rem',      // body mobile
+      lg: '1.125rem',    // body 
+      xl: '1.25rem',     // paragraph mobile
+      '2xl': '1.5rem',   // paragraph / h3 mobile
+      '2xl': '1.875rem', // h3 / h2 mobile
+      '3xl': '2.125rem', // h1 mobile
+      '4xl': '2.6875rem',// h2
+      '5xl': '3.75rem'   // h1
     },
     extend: {
       colors: {
-        white: '#F8F8F8',
-        black: '#0C0C0C'
+        white: '#F9F9F9',
+        black: '#0D0D0D',
+        grey: '#9E9E9E'
+      },
+      screens: {
+        'fw': '100rem'
       },
       spacing: {
+        '1/24': '4.16667%',
         '1/12': '8.33333%',
         '2/12': '16.66667%',
         '3/12': '25%',

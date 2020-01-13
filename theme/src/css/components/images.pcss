@@ -12,9 +12,36 @@ figure {
     padding-top: 150%;
   }
 
-  &.landscape::after {
-    content: '';
-    display: block;
-    padding-top: 66.66667%;
+  &.landscape {
+    &.margin::after {
+      content: '';
+      display: block;
+      /* padding-top: 66.49169%; */
+      padding-top: calc((100vw - (2 * $site-offset)) * 0.5507246);
+    }
+
+    &.wide {
+      .figure-sizer {
+        @apply relative w-full mx-auto;
+
+        &::after {
+          content: '';
+          display: block;
+          padding-top: 55.07246%;
+        }
+      }
+    }
+
+    &.full {
+      .figure-sizer {
+        @apply relative w-full mx-auto;
+
+        &::after {
+          content: '';
+          display: block;
+          padding-top: 55.07246%;
+        }
+      }
+    }
   }
 }

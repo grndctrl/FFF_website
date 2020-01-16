@@ -10,38 +10,75 @@
 .barba-slide-leave {
   transform: translateX(0);
   opacity: 1;
-
 }
+
 .barba-slide-enter-to {
   transform: translateX(0);
   opacity: 1;
 }
 
-
 .barba-slide-leave-to {
   transform: translateX(-100vw);
   opacity: 0;
 }
+
 .barba-slide-enter {
   transform: translateX(100vw);
   opacity: 0;
 }
 
+/* fade transition states */
+.barba-fade-leave {
+  opacity: 1;
+
+}
+.barba-fade-enter-to {
+  opacity: 1;
+}
+
+.barba-fade-leave-to {
+  opacity: 0;
+}
+.barba-fade-enter {
+  opacity: 0;
+}
 
 .barba-wipe {
-  @apply fixed w-full h-screen inset-x-0 bg-white z-40;
+  @apply fixed w-full h-screen inset-x-0 bg-black z-40;
   top: 100vh;
-  transition: top $medium easeInOutCirc;
+  opacity: 0;
 }
 
 .barba-leave {
   .barba-wipe {
-    top: 0;
+    animation: wipe-in $medium forwards easeInOutCirc;
   }
 }
 
 .barba-enter {
   .barba-wipe {
+    animation: wipe-out $medium forwards easeInOutCirc;
+  }
+}
+
+@keyframes wipe-in {
+  from {
     top: 100vh;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes wipe-out {
+  from {
+    top: 0;
+    opacity: 1;
+  }
+  to {
+    top: -100vh;
+    opacity: 0;
   }
 }

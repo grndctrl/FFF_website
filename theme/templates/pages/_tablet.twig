@@ -1,0 +1,224 @@
+{% extends "core/base.twig" %}
+
+{% block main %}
+<style>
+.font-h1 {
+    font-size: 60px;
+    letter-spacing: 0;
+    line-height: 75px;
+  }
+
+  .font-h2 {
+    font-size: 43px;
+    letter-spacing: 0.5px;
+    line-height: 54px;
+  }
+
+  .font-h3 {
+    font-size: 30px;
+    letter-spacing: 0.5px;
+    line-height: 38px;
+  }
+
+  .font-paragraph {
+    font-size: 24px;
+    letter-spacing: 0.5px;
+    line-height: 39px;
+  }
+
+  .font-body {
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    line-height: 30px;
+  }
+
+  .font-sub {
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    line-height: 22px;
+  }
+
+  .font-footer {
+    font-size: 24px;
+    letter-spacing: 0.44px;
+    line-height: 39px;
+  }
+
+  .font-highlight {
+    font-size: 30px;
+    letter-spacing: 0.5px;
+    line-height: 38px;
+  }
+}
+</style>
+
+
+  {% set text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit" %}
+  {% set subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit" %}
+
+
+  <div class="bg-black text-white">
+
+  <div class="header-offset"></div>
+
+  <section class="section-md">
+  <div class="container">
+  
+  <div class="row">
+  <div class="col w-full">
+    <h1 class="font-h1">
+      {{ text }}
+    </h1>
+  </div>
+  </div>
+  
+  </div>
+</section>
+
+<section class="section-md">
+  <div class="container">
+
+    <div class="row">
+      <div class="col w-full">
+        {% if subtitle is defined %}
+          <p class="font-body mb-1">
+            {{ subtitle }}
+          </p>
+        {% endif %}
+        <h2 class="font-h2 font-medium">
+          {{ text }}
+        </h2>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section-lg">
+  <div class="container">
+
+    <div class="row">
+      <div class="col w-full">
+        <h3 class="font-h3">
+          {{ text }}
+        </h3>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section-md">
+  <div class="container">
+  
+  <div class="row">
+  <div class="col w-full">
+    <div class="font-paragraph">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, ducimus sit sed consequatur corporis corrupti porro a laudantium vel magnam minus blanditiis dolorem quidem fugiat saepe dolorum asperiores? Dolor, quas.
+    </div>
+  </div>
+  </div>
+  
+  </div>
+</section>
+
+<section class="section-md">
+  <div class="container">
+
+    <div class="row">
+      <div class="col w-10/12 mx-1/12">
+        <p class="font-body">
+          Challenge
+        </p>
+        <p class="font-body">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat error dolorum modi quis repellendus sequi dignissimos beatae, esse rem deleniti consequatur itaque accusantium eveniet asperiores? Quod eveniet delectus rerum quos.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section-md ">
+  <div class="container">
+  
+  <div class="row">
+  <div class="col w-full">
+    <blockquote class="font-h3 mb-4">
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti, ea repellendus adipisci tempore voluptas dolorum consequatur quia est, accusantium nihil, rem sequi dolores quas perspiciatis. Minima, accusantium quasi. Illum!
+    </blockquote>
+    <p class="font-sub text-grey">
+      Quote
+    </p>
+  </div>
+  </div>
+  
+  </div>
+</section>
+
+<section class="section-md mt-0">
+  <div class="container">
+
+    <div class="row">
+      <div class="col w-10/12 ml-1/12">
+        <p class="font-sub text-grey">
+          {{ text }}
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section-md">
+  <div class="container">
+
+    <div class="row">
+      <div class="col w-6/12">
+        <p class="font-sub">
+          Client
+        </p>
+        <p class="font-sub text-grey">
+          Client Name
+        </p>
+      </div>
+      <div class="col w-6/12">
+        <p class="font-sub">
+          Services
+        </p>
+        <p class="font-sub text-grey">
+          {% if services is not defined %}
+            Strategy<br>Branding<br>Website<br>Copywriting
+          {% else %}
+            {{ services }}
+          {% endif %}
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% include "blocks/image-header.twig" %}
+
+  {% include "blocks/image.twig" with {
+    size : "wide"
+  } %}
+
+  {% include "blocks/image.twig" with {
+    size : "full"
+  } %}
+
+  {% include "blocks/image.twig" with {
+    size : "margin"
+  } %}
+
+  {% include "blocks/slider.twig" with {} %}
+
+  {% include "blocks/slider-full.twig" with { 
+
+  } %}
+  </div>
+
+{% endblock %}

@@ -3,10 +3,10 @@
   .slider-button-next {
     @apply absolute;
     top: 50%;
-    margin-top: -17px;
     z-index: +1;
     opacity: 1;
     width: 22px;
+    margin-top: -6px;
     transition: opacity $short ease;
 
     &.swiper-button-disabled {
@@ -44,11 +44,46 @@
   }
 }
 
+@screen md {
+  .slider {
+    .slider-button-prev,
+    .slider-button-next {
+        width: 44px;
+        margin-top: -12px;
+    }
+    .slider-button-prev {
+      margin-left: $site-offset-lg;
+    }
+
+    .slider-button-next {
+      margin-right: $site-offset-lg;
+    }
+
+    &.full {
+      .slider-button-prev {
+        /* margin-left: calc(((100vw - (2 * $site-offset-lg) + $gutter-lg) * 0.166667) - $gutter-lg); */
+        margin-left: calc(((100vw - (2 * $site-offset-lg) + $gutter-lg) / 12) + (2 * $site-offset-lg));
+      }
+
+      .slider-button-next {
+        margin-right: calc(((100vw - (2 * $site-offset-lg) + $gutter-lg) / 12) + (2 * $site-offset-lg));
+      }
+    }
+  }
+
+  .swiper-slide {
+    &.margin {
+      width: calc(((100vw - (2 * $site-offset-lg) + $gutter-lg) * 0.83333) - $gutter-lg);
+    }
+  }
+}
+
 @screen lg {
   .slider {
     .slider-button-prev,
     .slider-button-next {
         width: 58px;
+        margin-top: -17px;
     }
     .slider-button-prev {
       margin-left: $site-offset-lg;

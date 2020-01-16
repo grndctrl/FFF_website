@@ -3,51 +3,27 @@
 {% extends "core/base.twig" %}
 
 {% block main %}
+  <div class="bg-black text-white min-h-screen">
 
-  <section class="section header-offset"></section>
+    {% include "components/hero.twig" with { 
+      text: entry.hero
+    } %}
 
-  {% include "blocks/text-h3.twig" %}
+    {% for item in entry.caseHighlights.all() %}
 
-  {% include "blocks/text-h1.twig" %}
+      {% include "components/case-highlight.twig" with {
+        link: item.linkedCase.one().url(),
+        image: item.image.one(),
+        text: item.text,
+        subtext: item.subtext
+      } %}
 
-  {% include "blocks/text-h2.twig" %}
+    {% endfor %}
 
-  {% include "blocks/text-h2.twig" with {
-    subtitle: 'subtitel'
-  } %}
+    {% include "components/journal-highlight.twig" with {
+      journalHighlights: entry.journalHighlights.all()
+    } %}
 
-  {% include "blocks/text-details.twig" %}
-
-  {% include "blocks/text-paragraph.twig" %}
-
-  {% include "blocks/text-thin-paragraph.twig" %}
-
-  {% include "blocks/text-quote.twig" %}
-
-  {% include "blocks/image-header.twig" %}
-
-  {% include "blocks/image.twig" with {
-    size : "wide"
-  } %}
-
-  {% include "blocks/image.twig" with {
-    size : "full"
-  } %}
-
-  {% include "blocks/image.twig" with {
-    size : "margin"
-  } %}
-
-  {% include "blocks/slider.twig" with {} %}
-
-  {% include "blocks/debug-columns.twig" %}
-
-  {% include "blocks/slider-full.twig" with { 
-
-  } %}
-
-  {% include "blocks/image.twig" with {
-    size : "margin"
-  } %}
+  </div>
 
 {% endblock %}

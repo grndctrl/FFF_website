@@ -1,4 +1,8 @@
-<section class="section">
+{% if sectionClass is not defined %}
+  {% set sectionClass = [''] %}
+{% endif %}
+
+<section class="section-sm {{ sectionClass|join(' ') }}">
 
   <!-- Slider main container -->
   <div class="slider full swiper-container">
@@ -8,21 +12,24 @@
       <div class="swiper-slide margin">
         <div class="w-full">
           {% include "components/figure.twig" with {
-            figureClass : "margin"
+            size : "margin",
+            ratio: "strict"
           } %}
         </div>
       </div>
       <div class="swiper-slide margin">
         <div class="w-full">
           {% include "components/figure.twig" with {
-            figureClass : "margin"
+            size : "margin",
+            ratio: "strict"
           } %}
         </div>
       </div>
       <div class="swiper-slide margin">
         <div class="w-full">
           {% include "components/figure.twig" with {
-            figureClass : "margin"
+            size : "margin",
+            ratio: "strict"
           } %}
         </div>
       </div>

@@ -9,11 +9,13 @@ class Nav extends CoreModule {
 
     this.toggles = document.querySelectorAll('.toggle-menu')
     this.toggles.forEach((toggle) => {
+      toggle.element = this.element
       toggle.addEventListener('click', this.onToggle)
     })
 
     this.closers = document.querySelectorAll('.nav-menu-item')
     this.closers.forEach((closer) => {
+      closer.element = this.element
       closer.addEventListener('click', this.onClose)
     })
 
@@ -33,10 +35,18 @@ class Nav extends CoreModule {
   }
 
   onToggle(event) {
+    if (this.element.classList.contains('animating')) {
+      return
+    }
+    
     eventBus.$emit('toggle-menu', event)
   }
 
   onClose(event) {
+    if (this.element.classList.contains('animating')) {
+      return
+    }
+
     eventBus.$emit('close-menu', event)
   }
 
@@ -69,9 +79,7 @@ class Nav extends CoreModule {
   }
 
   closeMenu() {
-    if (this.element.classList.contains('animating')) {
-      return
-    }
+    document.body.classList.remove('unscrollable')
 
     if (this.element.classList.contains('active')) {
       this.element.classList.remove('active')
@@ -83,17 +91,17 @@ class Nav extends CoreModule {
   }
 
   toggleMenu() {
-    if (this.element.classList.contains('animating')) {
-      return
-    }
-
     if (this.element.classList.contains('active')) {
+      document.body.classList.remove('unscrollable')
+
       this.element.classList.remove('active')
       this.element.classList.add('animating')
       setTimeout(() => {
         this.element.classList.remove('animating')
       }, 400)
     } else {
+      document.body.classList.add('unscrollable')
+
       this.element.classList.add('active')
       this.element.classList.add('animating')
       setTimeout(() => {

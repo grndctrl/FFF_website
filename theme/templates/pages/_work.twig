@@ -1,0 +1,46 @@
+{# Default page #}
+
+{% extends "core/base.twig" %}
+
+{% block main %}
+  <div class="bg-black text-white min-h-screen">
+
+    <div class="header-offset"></div>
+
+    {% include "blocks/text-h2.twig" with {
+      text: entry.introText
+    } %}
+
+    <section class="section-sm">
+      <div class="container">
+
+        <div class="row">
+          {% for item in 1..4 %}
+            
+          <div class="col w-6/12 pb-32">
+            <a href="#" class="anim-underline-in-trigger">
+              <div class="pb-3 md:pb-6">
+              {% include "components/figure.twig" with {
+                orientation : "landscape",
+                size: "regular",
+                ratio: "strict"
+              } %}
+              </div>
+            </a>
+            <h3 class="font-h3 font-medium">
+              <a href="#" class="anim-underline-in anim-underline-in-target">
+                Kamu
+              </a>
+            </h3>
+          </div>
+
+          {% endfor %}
+
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+{% endblock %}

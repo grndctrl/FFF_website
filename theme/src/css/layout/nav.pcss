@@ -2,13 +2,7 @@
   @apply relative;
 
   .nav-menu {
-    @apply fixed w-full h-screen flex flex-col bg-gray-600 text-white;
-    top: 0;
-    left: 100vw;
-    padding: calc($header-height + $site-offset-sm) $site-offset-sm;
-    .nav-menu-item {
-      @apply ml-0;
-    }
+    @apply hidden;
   }
 
   .nav-burger {
@@ -17,7 +11,7 @@
     width: $burger-width;
     height: $burger-height;
     span {
-      @apply bg-black w-full self-end;
+      @apply bg-white w-full self-end;
       height: 2px;
       transition: $medium easeOutCirc;
     }
@@ -25,15 +19,8 @@
     @mixin hover-child span:first-child, margin-top, 4px;
     @mixin hover-child span:last-child, margin-bottom, 4px;
   }
-  &.animating {
-    .nav-menu {
-      transition: left $medium easeInOutCirc;
-    }
-  }
+
   &.active {
-    .nav-menu {
-      left: 10vw;
-    }
     .nav-burger {
       span {
         @apply bg-white;
@@ -49,22 +36,31 @@
   }
 }
 
-@screen md {
-  .nav-main {
-    &.active {
-      .nav-menu {
-        left: 20vw;
-      }
+.nav-overlay {
+  @apply fixed w-full h-screen;
+  top: 0;
+  left: 100vw;
+
+  .nav-menu {
+    @apply absolute inset-0 flex flex-col justify-center bg-black text-white;
+    padding: calc($header-height + $site-offset-sm) $site-offset-sm;
+    .nav-menu-item {
+      @apply ml-0;
     }
+  }
+
+  &.animating {
+    transition: left $short ease;
+  }
+  &.active {
+    left: 0;
   }
 }
 
-@screen lg {
+@screen md {
   .nav-main {
     .nav-menu {
-      @apply relative w-auto h-auto inset-auto flex-row p-0 bg-transparent text-black;
-      padding: calc($header-height + $site-offset-lg) $site-offset-lg;
-
+      @apply relative w-auto h-auto inset-auto flex p-0 bg-transparent;
       .nav-menu-item {
         @apply ml-4;
       }
@@ -74,3 +70,4 @@
     }
   }
 }
+

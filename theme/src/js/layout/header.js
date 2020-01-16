@@ -11,11 +11,33 @@ class Header extends CoreModule {
           this.pin()
         })
       )
+
       events.push(
         new CoreEventListener('unpin-header', () => {
           this.unpin()
         })
       )
+
+      events.push(
+        new CoreEventListener('toggle-menu', () => {
+          this.toggleMenu()
+        })
+      )
+  
+      events.push(
+        new CoreEventListener('close-menu', () => {
+          this.closeMenu()
+        })
+      )
+        
+      events.push(
+        new CoreEventListener('window-resized', () => {
+          if (window.innerWidth >= 1024) {
+            this.closeMenu()
+          }
+        })
+      )
+      
       super.events = events
 
       let scenes = []
@@ -46,6 +68,32 @@ class Header extends CoreModule {
 
   unpin() {
     this.element.classList.remove('pinned')
+  }
+
+  closeMenu() {
+    if (this.element.classList.contains('active')) {
+      this.element.classList.remove('active')
+      this.element.classList.add('animating')
+      setTimeout(() => {
+        this.element.classList.remove('animating')
+      }, 400)
+    }
+  }
+
+  toggleMenu() {
+    if (this.element.classList.contains('active')) {
+      this.element.classList.remove('active')
+      this.element.classList.add('animating')
+      setTimeout(() => {
+        this.element.classList.remove('animating')
+      }, 400)
+    } else {
+      this.element.classList.add('active')
+      this.element.classList.add('animating')
+      setTimeout(() => {
+        this.element.classList.remove('animating')
+      }, 400)
+    }
   }
 }
 

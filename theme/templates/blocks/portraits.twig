@@ -1,0 +1,35 @@
+{% if sectionClass is not defined %}
+  {% set sectionClass = [''] %}
+{% endif %}
+
+<section class="pt-6 pb-6 md:pt-6 {{ sectionClass|join(' ') }}">
+<div class="container">
+
+<div class="row">
+
+  {% for item in 1..5 %}
+
+    {% if loop.index0 is divisible by(3) %} 
+    {% set marginLeft = ' lg:ml-2/12' %}
+    {% else %}
+    {% set marginLeft = '' %}
+    {% endif %}
+      
+    <div class="col w-6/12 lg:w-3/12{{ marginLeft }} mb-12 lg:mb-24">
+
+      {% include "components/figure.twig" with {
+        orientation: 'portrait',
+        ratio: 'strict'
+      } %}
+
+      <p class="font-body pt-4 w-11/12">Voornaam Achternaam</p>
+      <p class="font-sub text-grey">Titel</p>
+
+    </div>
+
+  {% endfor %}
+
+</div>
+
+</div>
+</section>

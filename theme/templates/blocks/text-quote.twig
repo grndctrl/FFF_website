@@ -1,12 +1,26 @@
-<section class="section">
+{% if sectionClass is not defined %}
+  {% set sectionClass = [''] %}
+{% endif %}
+
+{% if text is not defined %}
+  {% set text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' %}
+{% endif %}
+
+{% if quote is not defined %}
+  {% set quote = 'Quote' %}
+{% endif %}
+
+<section class="section-md {{ sectionClass|join(' ') }}">
   <div class="container">
   
   <div class="row">
-  <div class="col w-full lg:w-8/12 lg:mx-2/12">
+  <div class="col w-full md:w-10/12 md:mx-1/12 lg:w-8/12 lg:mx-2/12">
     <blockquote class="font-h3 mb-4">
-      “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.”
+      {{ text }}
     </blockquote>
-    <p class="font-sub text-grey">Quote</p>
+    <p class="font-sub text-grey">
+      {{ quote }}
+    </p>
   </div>
   </div>
   

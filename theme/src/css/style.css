@@ -14,6 +14,8 @@
 @import "./components/images.pcss";
 @import "./components/slider.pcss";
 /*  */
+@import "./animations/animations.pcss";
+/*  */
 @import "./layout/barba.pcss";
 @import "./layout/header.pcss";
 @import "./layout/main.pcss";

@@ -1,25 +1,35 @@
-<section class="section">
+{% if sectionClass is not defined %}
+  {% set sectionClass = [''] %}
+{% endif %}
+
+{% if client is not defined %}
+  {% set client = 'Client name' %}
+{% endif %}
+
+
+<section class="section-md {{ sectionClass|join(' ') }}">
   <div class="container">
 
     <div class="row">
-      <div class="col w-2/12 ml-2/12">
+      <div class="col w-6/12 md:w-3/12 md:ml-1/12 lg:w-2/12 lg:ml-2/12">
         <p class="font-sub">
           Client
         </p>
-        <ul class="font-sub text-grey">
-          <li>Mag Architecten</li>
-        </ul>
+        <p class="font-sub text-grey">
+          {{ client }}
+        </p>
       </div>
-      <div class="col w-2/12">
+      <div class="col w-6/12 md:w-3/12 lg:w-2/12">
         <p class="font-sub">
           Services
         </p>
-        <ul class="font-sub text-grey">
-          <li>Strategy</li>
-          <li>Branding</li>
-          <li>Website</li>
-          <li>Copywriting</li>
-        </ul>
+        <p class="font-sub text-grey">
+          {% if services is not defined %}
+            Strategy<br>Branding<br>Website<br>Copywriting
+          {% else %}
+            {{ services }}
+          {% endif %}
+        </p>
       </div>
     </div>
 

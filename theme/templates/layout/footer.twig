@@ -1,6 +1,4 @@
-<div id="footer" class="footer-wrapper relative">
-
-  <footer class="section footer-main bg-gray-300 text-gray-600 z-50">
+  <footer class="section-md footer-main z-50">
     <div class="container">
 
       {% block footer %}
@@ -8,21 +6,48 @@
         {% set query = craft.globalSets().handle('footer') %}
         {% set footerEntry = query.one() %}
 
-        <div class="absolute inset-0 container">
-          <div class="flex justify-end">
-            <div class="btn-close toggle-footer">
-              <span></span>
-            </div>
+        <div class="row">
+          <div class="col w-full md:w-6/12 lg:w-3/12 font-footer pb-10 md:pb-12">
+              <p>Adres</p>
+              <p class="text-grey">
+              Hallenweg 1C<br>
+              5615 PP Eindhoven<br>
+              The Netherlands
+              </p>
+          </div>
+          <div class="col w-full md:hidden md:w-6/12 lg:w-3/12 font-footer pb-10">
+              <p class="">Route</p>
+          </div>
+          <div class="col w-full md:w-6/12  lg:w-3/12 font-footer pb-10 md:pb-12">
+              <p>Contact</p>
+              <ul class="text-grey">
+                <li>+31 6 48 93 92 96</li>
+                <li>hello@fffunction.studio</li>
+                <li>Whatsapp</li>
+              </ul>
+          </div>
+          <div class="col hidden md:block lg:hidden md:w-6/12 lg:w-3/12 font-footer pb-12">
+              <p class="">Route</p>
+          </div>
+          <div class="col w-full lg:w-6/12 font-footer pb-10 md:pb-12">
+          <p>Social</p>
+          <ul class="text-grey">
+            <li>Instagram (@fffunctionstudio)</li>
+            <li>Linkedin Fffunctionstudio</li>
+            <li>Unsplash</li>
+            <li>Spotify playlist fff.s</li>
+          </ul>
+          </div>
+          <div class="col w-full hidden lg:block md:w-6/12 lg:w-3/12 font-footer pb-32">
+              <p class="">Route</p>
           </div>
         </div>
-        <p>{{ footerEntry.footerText }}</p>
-        <p>&copy;
-          {{ "now"|date("Y") }}
+
+        <p class="font-sub text-grey">&copy;
+          {{ "now"|date("Y") }} fffunction studio
         </p>
 
       {% endblock %}
 
     </div>
   </footer>
-
-</div>

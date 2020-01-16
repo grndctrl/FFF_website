@@ -6,6 +6,10 @@
 html ,
 body {
   @apply text-black bg-white font-sans;
+
+  &.unscrollable {
+    @apply overflow-hidden max-h-screen;
+  }
 }
 
 a,
@@ -16,6 +20,18 @@ a:visited {
   color: inherit;
 }
 
-a:hover {
-  @apply underline;
+blockquote {
+  @apply relative;
+  &::before {
+    @apply absolute top-0 left-0;
+    content: '“';
+    margin-left: -0.4em;
+    width: 0.5em;
+  }
+  &::after {
+    @apply inline-block;
+    content: '”';
+    margin-left: -0.2em;
+    width: 0.5em;
+  }
 }

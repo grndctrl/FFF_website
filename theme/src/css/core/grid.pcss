@@ -5,13 +5,37 @@
   padding-right: $site-offset-sm;
 }
 
-.section {
+.no-padding-sm {
+  padding: 0;
+}
+
+.section-sm {
   padding-top: $section-offset-sm;
   padding-bottom: $section-offset-sm;
 }
 
+.section-md {
+  padding-top: $section-offset-sm;
+  padding-bottom: $section-offset-sm;
+}
+
+.section-lg {
+  padding-top: $section-offset-sm;
+  padding-bottom: $section-offset-sm;
+}
+
+.section-sm.mt-0,
+.section-md.mt-0,
+.section-lg.mt-0 {
+  padding-top: 0;
+}
+
+.hero {
+  @apply min-h-screen flex items-center;
+}
+
 .row {
-  @apply flex;
+  @apply flex flex-wrap;
   margin-left: calc($gutter-sm / -2);
   margin-right: calc($gutter-sm / -2);
 }
@@ -21,13 +45,23 @@
   padding-right: calc($gutter-sm / 2);
 }
 
-@screen lg {
+@screen md {
   .container {
     padding-left: $site-offset-lg;
     padding-right: $site-offset-lg;
   }
 
-  .section {
+  .section-sm {
+    padding-top: $section-offset-sm;
+    padding-bottom: $section-offset-sm;
+  }
+
+  .section-md {
+    padding-top: $section-offset-md;
+    padding-bottom: $section-offset-md;
+  }
+
+  .section-lg {
     padding-top: $section-offset-lg;
     padding-bottom: $section-offset-lg;
   }
@@ -40,5 +74,11 @@
   .col {
     padding-left: calc($gutter-lg / 2);
     padding-right: calc($gutter-lg / 2);
+  }
+}
+
+@media (max-width: 767px) {
+  .no-padding-sm {
+    padding: 0 !important;
   }
 }

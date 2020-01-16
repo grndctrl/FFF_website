@@ -43,7 +43,7 @@ class Core {
 
     window.addEventListener('resize', throttle((event) => {
       eventBus.$emit('window-resized', event)
-    }, 250))
+    }, 50))
   }
 
   attach(module, options = {}, reinit = false) {

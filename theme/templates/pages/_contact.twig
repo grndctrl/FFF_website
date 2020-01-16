@@ -1,0 +1,21 @@
+{# Default page #}
+
+{% extends "core/base.twig" %}
+
+{% block main %}
+
+  <div class="bg-black text-white min-h-screen">
+
+    <div class="header-offset"></div>
+
+    {% include "blocks/text-h2.twig" with {
+      subtitle: 'Contact'
+    } %}
+
+    {% include "blocks/image.twig" with {
+      size: 'wide'
+    } %}
+
+  </div>
+
+{% endblock %}

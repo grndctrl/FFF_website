@@ -11,9 +11,9 @@
 }
 
 .font-h3 {
-  font-size: 34px;
-  letter-spacing: 0;
-  line-height: 41px;
+  font-size: 24px;
+  letter-spacing: 0.3px;
+  line-height: 36px;
 }
 
 .font-paragraph {
@@ -24,6 +24,18 @@
 
   &:last-child {
     @apply mb-0;
+  }
+
+  p {
+    @apply mb-6;
+  }
+
+  p:last-child {
+    @apply mb-0;
+  }
+
+  a {
+    border-bottom: 2px solid $black;
   }
 }
 
@@ -42,6 +54,27 @@
   font-size: 14px;
   letter-spacing: 0.5px;
   line-height: 22px;
+  
+}
+
+.font-footer {
+  font-size: 20px;
+  letter-spacing: 0px;
+  line-height: 32px;
+}
+
+.font-highlight {
+  font-size: 20px;
+  letter-spacing: 0.5px;
+  line-height: 32.2px;
+}
+
+@screen md {
+  .font-footer {
+    font-size: 24px;
+    letter-spacing: 0.44px;
+    line-height: 39px;
+  }
 }
 
 @screen lg {
@@ -80,6 +113,18 @@
     letter-spacing: 0.5px;
     line-height: 22px;
   }
+
+  .font-footer {
+    font-size: 24px;
+    letter-spacing: 0.44px;
+    line-height: 39px;
+  }
+
+  .font-highlight {
+    font-size: 30px;
+    letter-spacing: 0.5px;
+    line-height: 38px;
+  }
 }
 
 @screen fw {
@@ -117,5 +162,17 @@
     font-size: calc(100vw * 14 / 1600);
     letter-spacing: 0.5px;
     line-height: 1.57142em;
+  }
+
+  .font-footer {
+    font-size: calc(100vw * 24 / 1600);
+    letter-spacing: 0.5px;
+    line-height: 1.625em;
+  }
+
+  .font-highlight {
+    font-size: calc(100vw * 30 / 1600);
+    letter-spacing: 0.5px;
+    line-height: 1.26667em;
   }
 }

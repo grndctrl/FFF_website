@@ -1,13 +1,21 @@
-<section class="py-6 lg:py-24">
+{% if sectionClass is not defined %}
+  {% set sectionClass = [""] %}
+{% endif %}
+
+{% if text is not defined %}
+  {% set text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." %}
+{% endif %}
+
+<section class="section-lg {{ sectionClass|join(' ') }}">
   <div class="container">
-  
-  <div class="row">
-  <div class="col w-full lg:w-8/12 lg:mx-2/12">
-    <h3 class="font-h3">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-    </h3>
-  </div>
-  </div>
-  
+
+    <div class="row">
+      <div class="col w-full md:w-10/12 md:mx-1/12 lg:w-8/12 lg:mx-2/12">
+        <h3 class="font-h3">
+          {{ text }}
+        </h3>
+      </div>
+    </div>
+
   </div>
 </section>

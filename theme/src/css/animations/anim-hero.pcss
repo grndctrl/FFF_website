@@ -1,0 +1,37 @@
+.anim-hero {
+  span {
+    display: inline-block;
+    float: left;
+    line-height: 1em;
+  }
+
+  .anim-hero-shrinker {
+    width: auto;
+    overflow-x: hidden;
+  }
+}
+
+.anim-hero-logo {
+  margin-top: -0.5em;
+  font-size: calc(100vw * 108 / 1440);
+  line-height: 1em;
+  overflow: visible;
+  letter-spacing: 3.3px;
+  font-weight: bold;
+}
+
+.anim-hero-text {
+  max-width: 960px;
+}
+
+@media (min-width: 1440px) {
+  .anim-hero-logo {
+    font-size: 108px;
+  }
+}
+
+@screen fw {
+  .anim-hero-text {
+    max-width: calc(100vw / 1600 * 960);
+  }
+}

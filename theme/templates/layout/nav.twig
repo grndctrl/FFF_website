@@ -1,22 +1,14 @@
-{% set sections = craft.sections.getAllSections() %}
+{% set menu = craft.globalSets().handle('menu').one().menu.all() %}
 
 <ul class="nav-menu">
 
-  {% for section in sections %}
+  {% for item in menu %}
 
-    {% if section.type == "single" %}
-
-      {% set entry = craft.entries.sectionId(section.id).first() %}
-
-      {% if entry.menu == true %}
-
-        <li class="nav-menu-item">
-          <a href="{{ entry.url }}">{{ entry.title }}</a>
-        </li>
-
-      {% endif %}
-
-    {% endif %}
+    <li class="nav-menu-item">
+      <a class="anim-underline-in" href="{{ item.url }}">
+        {{ item.title }}
+      </a>
+    </li>
 
   {% endfor %}
 

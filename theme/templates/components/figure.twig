@@ -1,3 +1,15 @@
+{% if size is not defined %}
+  {% set size = "wide" %}
+{% endif %}
+
+{% if ratio is not defined %}
+  {% set ratio = "original" %}
+{% endif %}
+
+{% if figureClass is not defined %}
+  {% set figureClass = [""] %}
+{% endif %}
+
 {% if image is defined %}
   {% if orientation is not defined %}
     {% set orientation = image.assetOrientation.value %}
@@ -29,33 +41,45 @@
 
   {# output srcset #}
 
-  <figure class="{% if figureClass is defined %}{{ figureClass }} {% endif %}{% if orientation is defined %}{{ orientation }}{% else %}landscape{% endif %}">
+  {# <figure class="{{ size }} {{ ratio }} {% if orientation is defined %}{{ orientation }}{% else %}landscape{% endif %}">
     <img src="{{ siteUrl }}{{ image.url() }}" srcset="{{ srcset|join(', ') }}" sizes="50vw" alt="">
-  </figure>
+  </figure> #}
 
-{% else %}
+    {% if size == "full" and ratio == 'strict' %}
 
-  {% if figureClass is defined %}
-
-    {% if figureClass == "full" %}
-      
-      <figure class="{{ figureClass }} {% if orientation is defined %}{{ orientation }}{% else %}landscape{% endif %} bg-grey">
-          <div class="container">
-            <div class="figure-sizer"></div>
-          </div>
-      </figure>
-
-    {% else %}
-
-       <figure class="{{ figureClass }} {% if orientation is defined %}{{ orientation }}{% else %}landscape{% endif %} bg-grey">
-          <div class="figure-sizer"></div>
-      </figure>
-        
-    {% endif %}
+    <figure class="{{ figureClass|join(' ') }} {{ size }} {{ ratio }} {% if orientation is defined %}{{ orientation }}{% else %}landscape{% endif %} bg-grey">
+      <div class="container">
+        <div class="figure-sizer"></div>
+        <img src="{{ siteUrl }}{{ image.url() }}" srcset="{{ srcset|join(', ') }}" sizes="100vw" alt="">
+      </div>
+    </figure>
 
   {% else %}
 
-    <figure class="{% if orientation is defined %}{{ orientation }}{% else %}landscape{% endif %} bg-grey"></figure>
+    <figure class="{{ figureClass|join(' ') }} {{ size }} {{ ratio }} {% if orientation is defined %}{{ orientation }}{% else %}landscape{% endif %} bg-grey">
+      <div class="figure-sizer"></div>
+      <img src="{{ siteUrl }}{{ image.url() }}" srcset="{{ srcset|join(', ') }}" sizes="100vw" alt="">
+    </figure>
+
+  {% endif %}
+
+{% else %}
+
+  {% if size == "full" and ratio == 'strict' %}
+
+    <figure class="{{ figureClass|join(' ') }} {{ size }} {{ ratio }} {% if orientation is defined %}{{ orientation }}{% else %}landscape{% endif %} bg-grey">
+      <div class="container">
+        <div class="figure-sizer"></div>
+        <img src="https://via.placeholder.com/1380x820" alt="">
+      </div>
+    </figure>
+
+  {% else %}
+
+    <figure class="{{ figureClass|join(' ') }} {{ size }} {{ ratio }} {% if orientation is defined %}{{ orientation }}{% else %}landscape{% endif %} bg-grey">
+      <div class="figure-sizer"></div>
+      <img src="https://via.placeholder.com/1380x820" alt="">
+    </figure>
 
   {% endif %}
 

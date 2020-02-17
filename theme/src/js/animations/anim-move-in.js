@@ -1,5 +1,5 @@
 import anime from 'animejs'
-import { CoreScrollScene, CoreEventListener } from '../core'
+import { CoreScrollScene, CoreEventListener, eventBus } from '../core'
 import { AnimModule } from './anim-module'
 
 class AnimMoveIn extends AnimModule {
@@ -56,6 +56,7 @@ class AnimMoveIn extends AnimModule {
                   delay: options.delay,
                   complete: () => {
                     element.classList.add('anim-complete')
+                    eventBus.$emit('anim-complete', {target: element})
                   }
                 })
               } else {
@@ -68,6 +69,7 @@ class AnimMoveIn extends AnimModule {
                   delay: delay,
                   complete: () => {
                     element.classList.add('anim-complete')
+                    eventBus.$emit('anim-complete', {target: element})
                   }
                 })
               }

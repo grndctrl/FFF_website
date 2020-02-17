@@ -4,66 +4,127 @@
 
 {% block main %}
 
-  <div class="bg-black text-white min-h-screen">
+  {% if entry.pageBlackWhite %}
+    {% set pageColor = 'bg-white text-black' %}
+  {% else %}
+    {% set pageColor = 'bg-black text-white' %}
+  {% endif %}
+  
+
+  <div class="{{ pageColor }} min-h-screen">
 
     <div class="header-offset"></div>
 
-    {% include "blocks/image-header.twig" with { 
-      image: entry.headerImage.one()
+
+    {% include "blocks/image-header.twig" with {
+      image: entry.headerImage.one(),
+      ratio: 'strict',
+      orientation: 'landscape',
+      sectionClass: ['lg:mt-6']
     } %}
 
     {% for item in entry.blocks.all() %}
 
+      {% if item.backgroundColor == 'white' %}
+      
+      {% set sectionClass = ['anim-move-in', 'bg-white', 'text-black'] %}
+
+      {% elseif item.backgroundColor == 'black' %}
+      {% set sectionClass = ['anim-move-in', 'bg-black', 'text-white'] %}
+      {% else %}
+        
+      {% set sectionClass = ['anim-move-in'] %}
+      {% endif %}
+
+      {% if loop.index0 < 1 %}
+        {% set sectionClass = '' %}
+      {% endif %}
+      
       {% if item.type == "h1" %}
 
         {% include "blocks/text-h1.twig" with {
-          text: item.text
+          text: item.text,
+          sectionClass: sectionClass
         } %}
 
       {% elseif item.type == 'h2' %}
 
         {% include "blocks/text-h2.twig" with {
           subtitle: item.subtitle,
-          text: item.text
+          text: item.text,
+          sectionClass: sectionClass
         } %}
 
       {% elseif item.type == 'h3' %}
 
         {% include "blocks/text-h3.twig" with {
-          text: item.text
+          text: item.text,
+          sectionClass: sectionClass
         } %}
 
       {% elseif item.type == 'paragraph' %}
 
         {% include "blocks/text-paragraph.twig" with {
-          text: item.text
+          text: item.text,
+          sectionClass: sectionClass
         } %}
       
       {% elseif item.type == 'thinParagraph' %}
       
         {% include "blocks/text-thin-paragraph.twig" with {
-          text: item.text
+          text: item.text,
+          sectionClass: sectionClass
+        } %}
+
+      {% elseif item.type == 'details' %}
+      
+        {% include "blocks/text-details.twig" with {
+          client: item.client,
+          services: item.services,
+          sectionClass: sectionClass
         } %}
 
       {% elseif item.type == 'quote' %}
       
         {% include "blocks/text-quote.twig" with {
-          text: item.text
+          text: item.text,
+          sectionClass: sectionClass
         } %}
 
       {% elseif item.type == 'footnote' %}
       
         {% include "blocks/text-footnote.twig" with {
-          text: item.text
+          text: item.text,
+          sectionClass: sectionClass
         } %}
 
       {% elseif item.type == 'image' %}
-      
+        {% if item.fixedRatio %}
+        {% set ratio = 'strict' %}
+        {% else %}
+          
+        {% set ratio = 'original' %}
+        {% endif %}
         {% include "blocks/image.twig" with {
           image: item.image.one(),
           size: item.size,
-          ratio: 'original'
+          ratio: ratio,
+          sectionClass: sectionClass
         } %}
+
+      {% elseif item.type == 'slider' %}
+
+        {% if item.showNextSlide %}
+          {% include "blocks/slider-full.twig" with {
+            slides: item.slides.all(),
+            sectionClass: sectionClass
+          } %}
+        {% else %}
+          {% include "blocks/slider.twig" with {
+            slides: item.slides.all(),
+            sectionClass: sectionClass
+          } %}
+        {% endif %}
 
       {% endif %}
 
@@ -85,10 +146,10 @@
       {% set indexNext = 0 %}
     {% endif %}
 
-    <div class="pt-24 pb-40">
+    <div class="py-8 mt-18 lg:pb-32 bg-void lg:bg-black">
       <div class="container">
         <div class="row">
-          <div class="col w-8/12 mx-auto">
+          <div class="col w-full lg:w-8/12 mx-auto">
             <p class="font-h2">
               <a href="{{ cases[indexNext].url }}" class="anim-underline-in">
                 Next case
@@ -100,5 +161,7 @@
     </div>
 
   </div>
+
+      <div class="pt-12 lg:pt-0 bg-black"></div>
 
 {% endblock %}

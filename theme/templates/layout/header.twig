@@ -29,7 +29,7 @@
   </div>
 </header> #}
 
-<header class="section header-main header-unpin text-xl z-50 anim-open-sesame">
+<header class="section header-main header-unpin font-body z-50 anim-open-sesame" style="transform: translateZ(200px)">
   <div class="container">
 
     {% block header %}
@@ -38,7 +38,7 @@
       {% set headerEntry = query.one() %} #}
 
       <nav id="nav-main" class="nav-main flex justify-between items-center" role="navigation">
-        <a class="" href="{{ siteUrl }}">
+        <a class="close-menu" href="{{ siteUrl }}">
         <div class="hidden md:block font-medium anim-logo">
           <span class="float-left">fff</span>
           <span class="anim-logo-item left">u</span>
@@ -95,6 +95,6 @@
   </div>
 </header>
 
-<nav id="nav-overlay" class="nav-overlay font-h2 z-40">
+<nav id="nav-overlay" class="nav-overlay font-h2 z-40" style="transform: translateZ(100px)">
   {% include "layout/nav.twig" %}
 </nav>

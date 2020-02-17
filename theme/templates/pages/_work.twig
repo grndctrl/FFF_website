@@ -7,32 +7,45 @@
 
     <div class="header-offset"></div>
 
+    {# {% if entry.subtitle == '' or entry.subtitle is null %}
+      {% set subtitle = '&nbsp;' %}
+      {% else %}
+      {% set subtitle = entry.subtitle %}
+    {% endif %} #}
     {% include "blocks/text-h2.twig" with {
-      text: entry.introText
+      subtitle: entry.subtitle,
+      text: entry.introText,
+      sectionClass: ['lg:mt-6']
     } %}
 
     <section class="section-sm">
       <div class="container">
 
         <div class="row">
-          {% for item in 1..4 %}
-            
-          <div class="col w-6/12 pb-32">
-            <a href="#" class="anim-underline-in-trigger">
-              <div class="pb-3 md:pb-6">
-              {% include "components/figure.twig" with {
-                orientation : "landscape",
-                size: "regular",
-                ratio: "strict"
-              } %}
-              </div>
-            </a>
-            <h3 class="font-h3 font-medium">
-              <a href="#" class="anim-underline-in anim-underline-in-target">
-                Kamu
+          {% for item in entry.cases.all() %}
+
+            {% set delay = 0 %}
+            {% if loop.index is even %}
+              {% set delay = 200 %}
+            {% endif %}
+
+            <div class="col w-full lg:w-6/12 pb-32 anim-move-in" data-anim-delay="{{ delay }}">
+              <a href="{{ item.url() }}" class="anim-underline-in-trigger">
+                <div class="pb-3 md:pb-6">
+                  {% include "components/figure.twig" with {
+                    image : item.thumbnail.one(),
+                    orientation: "landscape",
+                    size: "overview",
+                    ratio: "strict"
+                  } %}
+                </div>
               </a>
-            </h3>
-          </div>
+              <h3 class="font-h3 font-medium">
+                <a href="{{ item.url() }}" class="anim-underline-in anim-underline-in-target">
+                  {{ item.title }}
+                </a>
+              </h3>
+            </div>
 
           {% endfor %}
 

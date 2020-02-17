@@ -1,5 +1,9 @@
 {% if sectionClass is not defined %}
-  {% set sectionClass = [''] %}
+  {% set sectionClass = [""] %}
+{% endif %}
+
+{% if slides is not defined %}
+  {% set slides = ["", "", ""] %}
 {% endif %}
 
 <section class="section-sm {{ sectionClass|join(' ') }}">
@@ -9,30 +13,20 @@
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper">
       <!-- Slides -->
-      <div class="swiper-slide margin">
-        <div class="w-full">
+
+      {% for slide in slides %}
+
+        <div class="swiper-slide margin">
           {% include "components/figure.twig" with {
             size : "margin",
-            ratio: "strict"
+            ratio: "strict",
+            orientation: "landscape",
+            image: slide
           } %}
         </div>
-      </div>
-      <div class="swiper-slide margin">
-        <div class="w-full">
-          {% include "components/figure.twig" with {
-            size : "margin",
-            ratio: "strict"
-          } %}
-        </div>
-      </div>
-      <div class="swiper-slide margin">
-        <div class="w-full">
-          {% include "components/figure.twig" with {
-            size : "margin",
-            ratio: "strict"
-          } %}
-        </div>
-      </div>
+
+      {% endfor %}
+
     </div>
 
     <!-- If we need navigation buttons -->

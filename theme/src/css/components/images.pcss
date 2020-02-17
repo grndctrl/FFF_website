@@ -7,6 +7,10 @@ figure {
 
   &.desaturated {
     filter: grayscale(100%);
+    transition: filter $medium ease;
+    &:hover {
+      filter: grayscale(0%);
+    }
   }
 
   &.strict {
@@ -48,6 +52,30 @@ figure {
         }
       }
 
+      &.case {
+        .figure-sizer {
+          @apply relative w-full mx-auto;
+
+          &::after {
+            content: "";
+            display: block;
+            padding-top: 59.42%;
+          }
+        }
+      }
+
+      &.overview {
+        .figure-sizer {
+          @apply relative w-full mx-auto;
+
+          &::after {
+            content: "";
+            display: block;
+            padding-top: 64.37125%;
+          }
+        }
+      }
+
       &.regular {
         .figure-sizer {
           @apply relative w-full mx-auto;
@@ -73,6 +101,7 @@ figure {
       }
     }
 
+    video,
     img {
       @apply block absolute w-full h-full inset-0;
       object-fit: cover;
@@ -83,6 +112,7 @@ figure {
       @apply hidden;
     }
 
+    video,
     img {
       @apply block relative w-full;
     }

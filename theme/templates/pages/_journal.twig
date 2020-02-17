@@ -8,6 +8,7 @@
   <div class="bg-white text-black min-h-screen">
 
     <div class="header-offset"></div>
+    <div class="lg:pt-6"></div>
 
     <section class="pt-6">
       <div class="container">
@@ -15,14 +16,14 @@
         <div class="row">
           {% for index in 0..1 %}
 
-          {% set article = articles[index] %}
+            {% set article = articles[index] %}
 
             <div class="col w-full md:w-6/12 pb-12">
               <a href="{{ article.url() }}" class="anim-underline-in-trigger">
                 <div class="pb-3 md:pb-6">
                   {% include "components/figure.twig" with {
-                    image: article.thumbnail.one(),
-                    size : "wide",
+                    image : article.thumbnail.one(),
+                    size: "regular",
                     ratio: "strict",
                     orientation: "landscape",
                     figureClass: ["desaturated"]
@@ -56,14 +57,19 @@
 
         <div class="row pt-12">
           {% for index in 2..(articles|length - 1) %}
-          {% set article = articles[index] %}
+            {% set article = articles[index] %}
 
-            <div class="col w-full md:w-6/12 pb-12 md:pb-32">
+            {% set delay = 0 %}
+            {% if loop.index is even %}
+              {% set delay = 200 %}
+            {% endif %}
+
+            <div class="col w-full md:w-6/12 pb-12 md:pb-32 anim-move-in" data-anim-delay="{{ delay }}">
               <a href="{{ article.url() }}" class="anim-underline-in-trigger">
                 <div class="pb-3 md:pb-6">
                   {% include "components/figure.twig" with {
-                    image: article.thumbnail.one(),
-                    size : "wide",
+                    image : article.thumbnail.one(),
+                    size: "regular",
                     ratio: "strict",
                     orientation: "landscape",
                     figureClass: ["desaturated"]
@@ -88,5 +94,7 @@
     </section>
 
   </div>
+
+      <div class="pt-12 lg:pt-0 bg-black"></div>
 
 {% endblock %}

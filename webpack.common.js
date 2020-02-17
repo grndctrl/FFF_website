@@ -86,7 +86,8 @@ module.exports = {
 
   entry: {
     main: path.resolve(__dirname, 'theme/src/index.js'),//'./src/index.js',
-    styleguide: path.resolve(__dirname, 'theme/src/styleguide.js')//'./src/styleguide.js',
+    styleguide: path.resolve(__dirname, 'theme/src/styleguide.js'),//'./src/styleguide.js',
+    'hide-footer': path.resolve(__dirname, 'theme/src/hide-footer.js')//'./src/styleguide.js',
   },
 
   output: {

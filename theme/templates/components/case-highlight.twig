@@ -8,19 +8,21 @@
     <div class="row anim-underline-in-trigger pb-3 md:pb-6">
       <div class="col w-full">
         <a href="{{ link }}" class="">
-          {% include "components/figure.twig" with {
-            size : "wide",
-            ratio: 'strict',
-            orientation: 'landscape',
-            image: image
-          } %}
+
+              {% include "components/figure.twig" with {
+                size : "case",
+                ratio: 'strict',
+                orientation: 'landscape',
+                image: image
+              } %}
+            
         </a>
       </div>
     </div>
     <div class="row md:pb-16">
       <div class="col w-full md:w-6/12">
         <h3 class="font-highlight font-medium">
-          <a href="#" class="anim-underline-in anim-underline-in-target">
+          <a href="{{ link }}" class="anim-underline-in anim-underline-in-target">
             {{ text }}
           </a>
         </h3>

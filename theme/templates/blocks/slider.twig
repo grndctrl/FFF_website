@@ -1,45 +1,42 @@
 {% if sectionClass is not defined %}
-  {% set sectionClass = [''] %}
+  {% set sectionClass = [""] %}
+{% endif %}
+
+{% if slides is not defined %}
+  {% set slides = ["", "", ""] %}
 {% endif %}
 
 <section class="section-sm {{ sectionClass|join(' ') }}">
-<div class="container">
+  <div class="container">
 
-<!-- Slider main container -->
-<div class="slider swiper-container">
-    <!-- Additional required wrapper -->
-    <div class="swiper-wrapper">
+    <!-- Slider main container -->
+    <div class="slider swiper-container">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
         <!-- Slides -->
-        <div class="swiper-slide">
-        <div class="w-full">
-            {% include "components/figure.twig" with {
-                size: 'wide',
-                ratio: 'strict'
-            } %}
-        </div>
-        </div>
-        <div class="swiper-slide opacity-75">
-            {% include "components/figure.twig" with {
-                size: 'wide',
-                ratio: 'strict'
-            } %}
-        </div>
-        <div class="swiper-slide opacity-50">
-            {% include "components/figure.twig" with {
-                size: 'wide',
-                ratio: 'strict'
-            } %}
-        </div>
-    </div>
 
-    <!-- If we need navigation buttons -->
-    <div class="slider-button-prev">
+        {% for slide in slides %}
+
+          <div class="swiper-slide">
+            {% include "components/figure.twig" with {
+              size : "wide",
+              ratio: "strict",
+              orientation: "landscape",
+              image: slide
+            } %}
+          </div>
+
+        {% endfor %}
+      </div>
+
+      <!-- If we need navigation buttons -->
+      <div class="slider-button-prev">
         {% include "svg/arrow-left.twig" %}
-    </div>
-    <div class="slider-button-next">
+      </div>
+      <div class="slider-button-next">
         {% include "svg/arrow-right.twig" %}
+      </div>
     </div>
-</div>
 
-</div>
+  </div>
 </section>

@@ -13,7 +13,9 @@ class Nav extends CoreModule {
       toggle.addEventListener('click', this.onToggle)
     })
 
-    this.closers = document.querySelectorAll('.nav-menu-item')
+    this.closers = Array.from(document.querySelectorAll('.nav-menu-item'))
+    this.closers.push(document.querySelector('.close-menu'))
+
     this.closers.forEach((closer) => {
       closer.element = this.element
       closer.addEventListener('click', this.onClose)
@@ -65,7 +67,6 @@ class Nav extends CoreModule {
         this.closeMenu()
       })
     )
-
     
     events.push(
       new CoreEventListener('window-resized', () => {

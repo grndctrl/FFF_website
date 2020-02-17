@@ -9,13 +9,28 @@
     <div class="header-offset"></div>
 
     {% include "blocks/text-h2.twig" with {
-      subtitle: 'Contact'
+      subtitle: entry.subtitle,
+      text: entry.introText,
+      sectionClass: 'lg:mt-6'
     } %}
 
     {% include "blocks/image.twig" with {
-      size: 'wide'
+      size: 'wide',
+      ratio: 'original',
+      image: entry.headerImage.one()
     } %}
 
+{# blocks start #}
+{# blocks end #}
+
+
+
   </div>
+
+  <style>
+  .footer-main {
+    display: none;
+  }
+  </style>
 
 {% endblock %}

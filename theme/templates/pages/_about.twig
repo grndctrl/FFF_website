@@ -9,12 +9,17 @@
     <div class="header-offset"></div>
 
     {% include "blocks/image-header.twig" with {
-      ratio: 'strict'
+      image: entry.headerImage.one(),
+      ratio: 'strict',
+      sectionClass: ['lg:mt-6']
     } %}
-
+      
     <div class="pt-0 md:pt-6"></div>
 
-    {% include "blocks/text-h3.twig" %}
+    {% include "blocks/text-h4.twig" with {
+      text: entry.introText,
+      sectionClass: 'anim-move-in'
+    } %}
 
     <div class="pt-6 md:pt-6"></div>
 
@@ -25,7 +30,8 @@
     <div class="pt-12 md:pt-0"></div>
 
     {% include "blocks/text-h3.twig" with {
-      text: 'Our services'
+      text: 'Our services',
+      sectionClass: ['anim-move-in', 'section-title']
     } %}
 
     <div class="pt-6 md:pt-0"></div>
@@ -33,29 +39,30 @@
     <section class="pb-12 md:pb-6">
       <div class="container">
 
-        {% for item in 1..3 %}
-          
-        <div class="row mb-1">
-          <div class="col w-full md:w-10/12 md:ml-1/12 lg:ml-2/12">
-            <p class="font-body font-bold">
-              Strategy
-            </p>
-          </div>
-        </div>
-               
-        <div class="row  {% if loop.index < (1..3)|length %}mb-12 md:mb-20{% endif %}">
-          <div class="col w-full md:w-5/12 md:ml-1/12 lg:w-4/12 lg:ml-2/12">
-            <p class="font-body">We ask questions, find answers and define goals that we’ll reach with a clear and thoughtful strategy.</p>
-          </div>
+        {% for item in entry.services.all() %}
+          <div class="anim-move-in">
+            <div class="row mb-1">
+              <div class="col w-full md:w-10/12 md:ml-1/12 lg:ml-2/12">
+                <p class="font-body font-bold">
+                  {{ item.caption }}
+                </p>
+              </div>
+            </div>
 
-          <div class="col w-full pt-6 md:pt-0 md:w-5/12 md:ml-1/12 lg:w-4/12 lg:ml-0">
-            <p class="font-sub text-grey">
-              Branding<br>
-              Communcation Strategy<br>
-              Analysis
-            </p>
+            <div class="row {% if loop.index < entry.services.all()|length %}mb-12 md:mb-20{% endif %}">
+              <div class="col w-full md:w-5/12 md:ml-1/12 lg:w-4/12 lg:ml-2/12">
+                <p class="font-body">
+                  {{ item.text|nl2br }}
+                </p>
+              </div>
+
+              <div class="col w-full pt-6 md:pt-0 md:w-5/12 md:ml-1/12 lg:w-4/12 lg:ml-2/12">
+                <p class="font-sub text-grey">
+                  {{ item.keywords|nl2br }}
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
 
         {% endfor %}
 
@@ -63,28 +70,49 @@
     </section>
 
     {% include "blocks/text-h3.twig" with {
-      text: 'The team'
+      text: 'The team',
+      sectionClass: ['anim-move-in', 'section-title']
     } %}
 
     {% include "blocks/portraits.twig" with {
+      items : entry.team.all()
     } %}
 
-    <section class="pt-6 pb-24 md:pb-32">
-    <div class="container">
-    
-    <div class="row">
-    <div class="col w-full md:w-10/12 md:ml-2/12">
-    <p class="text-grey font-body">
-      Job offer
-    </p>
-    <p class="font-h2 font-medium">
-      Junior Designer (fulltime)
-    </p>
-    </div>
-    </div>
-    
-    </div>
-    </section>
+    {% if entry.vacancy.all() | length > 0 %}
+
+      <section class="pt-6 pb-24 md:pb-32 anim-move-in">
+        <div class="container">
+
+          <div class="row">
+
+            {% for item in entry.vacancy.all() %}
+
+              <div class="col w-full md:w-10/12 md:ml-2/12">
+                <p class="text-grey font-body">
+                  {{ item.subtitle }}
+                </p>
+                <p class="font-h2 font-medium">
+                {% if item.linkedPage|length > 0 %}
+                <a href="{{ item.linkedPage.one().url }}" class="anim-underline-in">
+                    {{ item.positionTitle }}
+                  </a>
+                {% else %}
+                  {{ item.positionTitle }}
+                {% endif %}
+
+                </p>
+              </div>
+
+            {% endfor %}
+
+          </div>
+
+        </div>
+      </section>
+
+    {% endif %}
+
+    <div class="pt-12 lg:pt-0 bg-black"></div>
 
   </div>
 

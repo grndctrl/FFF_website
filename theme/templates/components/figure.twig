@@ -10,24 +10,28 @@
   {% set figureClass = [""] %}
 {% endif %}
 
-{% if image is defined %}
+{% if image is not null %}
   {% if orientation is not defined %}
+    {% if image.kind == 'video' %}
+    {% set orientation = 'landscape' %}
+    {% else %}
     {% set orientation = image.assetOrientation.value %}
+    {% endif %}
   {% endif %}
 
   {% set transforms = [
     {
       handle: "sm",
-      width: 400
+      width: 375
     }, {
       handle: "md",
-      width: 800
+      width: 768
     }, {
       handle: "lg",
-      width: 1600
+      width: 1280
     }, {
       handle: "fw",
-      width: 2560
+      width: 1600
     }
   ] %}
   {% set srcset = [] %}
@@ -45,27 +49,42 @@
     <img src="{{ siteUrl }}{{ image.url() }}" srcset="{{ srcset|join(', ') }}" sizes="50vw" alt="">
   </figure> #}
 
-    {% if size == "full" and ratio == 'strict' %}
+  {% if size == "full" and ratio == "strict" %}
 
-    <figure class="{{ figureClass|join(' ') }} {{ size }} {{ ratio }} {% if orientation is defined %}{{ orientation }}{% else %}landscape{% endif %} bg-grey">
+    <figure class="{{ figureClass|join(' ') }} {{ size }} {{ ratio }} {% if orientation is defined %}{{ orientation }}{% else %}landscape{% endif %}">
       <div class="container">
         <div class="figure-sizer"></div>
-        <img src="{{ siteUrl }}{{ image.url() }}" srcset="{{ srcset|join(', ') }}" sizes="100vw" alt="">
+
+        {% if image.kind == "video" %}
+          <video autoplay muted loop>
+            <source src="{{ siteUrl }}{{ image.url }}" type="video/mp4">
+          </video>
+        {% else %}
+          <img src="{{ siteUrl }}{{ image.url() }}" alt="">
+        {% endif %}
+
       </div>
     </figure>
 
   {% else %}
 
-    <figure class="{{ figureClass|join(' ') }} {{ size }} {{ ratio }} {% if orientation is defined %}{{ orientation }}{% else %}landscape{% endif %} bg-grey">
+    <figure class="{{ figureClass|join(' ') }} {{ size }} {{ ratio }} {% if orientation is defined %}{{ orientation }}{% else %}landscape{% endif %}">
       <div class="figure-sizer"></div>
-      <img src="{{ siteUrl }}{{ image.url() }}" srcset="{{ srcset|join(', ') }}" sizes="100vw" alt="">
+      {% if image.kind == "video" %}
+        <video muted loop>
+          <source src="{{ siteUrl }}{{ image.url }}" type="video/mp4">
+        </video>
+      {% else %}
+        <img src="{{ siteUrl }}{{ image.url() }}" alt="">
+      {% endif %}
+
     </figure>
 
   {% endif %}
 
 {% else %}
 
-  {% if size == "full" and ratio == 'strict' %}
+  {% if size == "full" and ratio == "strict" %}
 
     <figure class="{{ figureClass|join(' ') }} {{ size }} {{ ratio }} {% if orientation is defined %}{{ orientation }}{% else %}landscape{% endif %} bg-grey">
       <div class="container">

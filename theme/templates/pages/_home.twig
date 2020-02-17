@@ -15,15 +15,23 @@
         link: item.linkedCase.one().url(),
         image: item.image.one(),
         text: item.text,
-        subtext: item.subtext
+        subtext: item.subtext,
+        sectionClass: 'anim-move-in'
       } %}
 
     {% endfor %}
 
+    {% if  entry.journalHighlights.all()|length > 0 %}
+
     {% include "components/journal-highlight.twig" with {
-      journalHighlights: entry.journalHighlights.all()
+      journalHighlights: entry.journalHighlights.all(),
+      sectionClass: 'anim-move-in'
     } %}
+    
+    {% endif %}
 
   </div>
+
+      <div class="pt-12 lg:pt-0 bg-black"></div>
 
 {% endblock %}

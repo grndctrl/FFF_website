@@ -10,11 +10,13 @@
 @import "./core/elements.pcss";
 @import "./core/fonts.pcss";
 /*  */
+/* purgecss start ignore */
 @import "./components/components.pcss";
 @import "./components/images.pcss";
 @import "./components/slider.pcss";
 /*  */
 @import "./animations/animations.pcss";
+/* purgecss end ignore */
 /*  */
 @import "./layout/barba.pcss";
 @import "./layout/header.pcss";

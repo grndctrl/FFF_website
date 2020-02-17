@@ -7,7 +7,7 @@
 
 <div class="row">
 
-  {% for item in 1..5 %}
+  {% for item in items %}
 
     {% if loop.index0 is divisible by(3) %} 
     {% set marginLeft = ' lg:ml-2/12' %}
@@ -15,15 +15,16 @@
     {% set marginLeft = '' %}
     {% endif %}
       
-    <div class="col w-6/12 lg:w-3/12{{ marginLeft }} mb-12 lg:mb-24">
+    <div class="col w-6/12 lg:w-3/12{{ marginLeft }} mb-12 lg:mb-24 anim-move-in" data-anim-delay="{{ loop.index0 * 200 }}">
 
       {% include "components/figure.twig" with {
         orientation: 'portrait',
-        ratio: 'strict'
+        ratio: 'strict',
+        image: item.image.one()
       } %}
 
-      <p class="font-body pt-4 w-11/12">Voornaam Achternaam</p>
-      <p class="font-sub text-grey">Titel</p>
+      <p class="font-body pt-4 w-11/12">{{ item.fullName }}</p>
+      <p class="font-sub text-grey">{{ item.caption }}</p>
 
     </div>
 

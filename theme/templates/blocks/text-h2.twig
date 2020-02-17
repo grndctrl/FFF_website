@@ -10,11 +10,13 @@
   <div class="container">
 
     <div class="row">
-      <div class="col w-full md:w-10/12 md:mx-1/12 lg:w-8/12 lg:mx-2/12">
+      <div class="col w-full lg:w-8/12 lg:mx-2/12">
         {% if subtitle is defined %}
+          {% if subtitle != "" %}
           <p class="font-body mb-1">
-            {{ subtitle }}
+            {{ subtitle|raw }}
           </p>
+          {% endif %}
         {% endif %}
         <h2 class="font-h2 font-medium">
           {{ text }}

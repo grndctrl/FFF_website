@@ -4,7 +4,7 @@ import 'zenscroll'
 
 import { core } from './js/core'
 import { header, nav, barbaManager } from './js/layout'
-import { slider, images, safariHeaderFix } from './js/components'
+import { slider, images, safariHeaderFix, videoPlayer } from './js/components'
 import { animMoveIn, animFadeIn, animOpenSesame, animLogo, animHero, animMousePerspective, animUnderlineIn } from './js/animations'
 
 ;(function() {
@@ -23,6 +23,7 @@ import { animMoveIn, animFadeIn, animOpenSesame, animLogo, animHero, animMousePe
   core.attach(animHero, { target: '.anim-hero' }, true)
   core.attach(animUnderlineIn, {}, true)
   core.attach(animMousePerspective, {}, true)
+  core.attach(videoPlayer, {}, true)
 
   core.init()
 })()

@@ -55,6 +55,10 @@
   &:last-child {
     @apply mb-0;
   }
+
+  a:not(.anim-underline-in):hover {
+    border-bottom: 1px solid $black;
+  }
 }
 
 .font-sub {
@@ -135,7 +139,7 @@
 
 @screen fw {
   .font-h1 {
-    font-size: calc(100vw * 60 / 1600);
+    font-size: min(calc(100vw * 60 / 1600), 72px);
     letter-spacing: 0;
     line-height: 1.25em;
   }
@@ -180,5 +184,39 @@
     font-size: calc(100vw * 30 / 1600);
     letter-spacing: 0.5px;
     line-height: 1.26667em;
+  }
+}
+
+@media (min-width: 1920px) {
+  .font-h1 {
+    font-size: calc(60px * 1.2);
+  }
+
+  .font-h2 {
+    font-size: calc(43px * 1.2);
+  }
+
+  .font-h3 {
+    font-size: calc(30px * 1.2);
+  }
+
+  .font-paragraph {
+    font-size: calc(24px * 1.2);
+  }
+
+  .font-body {
+    font-size: calc(18px * 1.2);
+  }
+
+  .font-sub {
+    font-size: calc(14px * 1.2);
+  }
+
+  .font-footer {
+    font-size: calc(24px * 1.2);
+  }
+
+  .font-highlight {
+    font-size: calc(30px * 1.2);
   }
 }

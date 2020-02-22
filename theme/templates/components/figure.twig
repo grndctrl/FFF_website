@@ -10,7 +10,11 @@
   {% set figureClass = [""] %}
 {% endif %}
 
-{% if image is not null %}
+{% if image is not defined %}
+  {% set image = null %}
+{% endif %}
+
+{% if image is not null and image != "" %}
   {% if orientation is not defined %}
     {% if image.kind == 'video' %}
     {% set orientation = 'landscape' %}
@@ -56,7 +60,7 @@
         <div class="figure-sizer"></div>
 
         {% if image.kind == "video" %}
-          <video autoplay muted loop>
+          <video autoplay loop muted playsinline>
             <source src="{{ siteUrl }}{{ image.url }}" type="video/mp4">
           </video>
         {% else %}

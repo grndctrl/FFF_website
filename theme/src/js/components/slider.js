@@ -20,6 +20,9 @@ class Slider extends CoreModule {
             768: {
               spaceBetween: 44
             },
+            1600: {
+              spaceBetween: 64
+            },
           },
           navigation: {
             nextEl: '.slider-button-next',
@@ -35,6 +38,9 @@ class Slider extends CoreModule {
           breakpoints: {
             768: {
               spaceBetween: 44
+            },
+            1600: {
+              spaceBetween: 64
             },
           },
           navigation: {

@@ -1,0 +1,126 @@
+{% if blocks is not defined %}
+  {% set blocks = [] %}
+{% endif %}
+
+{% for item in blocks %}
+
+  {% if item.backgroundColor == "white" %}
+
+    {% set sectionClass = ['anim-move-in', 'bg-white', 'text-black'] %}
+
+  {% elseif item.backgroundColor == 'black' %}
+    {% set sectionClass = ['anim-move-in', 'bg-black', 'text-white'] %}
+  {% else %}
+
+    {% set sectionClass = ['anim-move-in'] %}
+  {% endif %}
+
+  {% if loop.index0 < 1 %}
+    {% set sectionClass = "" %}
+  {% endif %}
+
+  {% if item.type == "ctaButton" %}
+
+    {% include "blocks/cta-button.twig" with {
+          text: item.text,
+          buttonLabel: item.buttonLabel,
+          sectionClass: sectionClass
+        } %}
+
+  {% elseif item.type == "h1" %}
+
+    {% include "blocks/text-h1.twig" with {
+          text: item.text,
+          sectionClass: sectionClass
+        } %}
+
+  {% elseif item.type == 'h2' %}
+
+    {% include "blocks/text-h2.twig" with {
+          subtitle: item.subtitle,
+          text: item.text,
+          sectionClass: sectionClass
+        } %}
+
+  {% elseif item.type == 'h3' %}
+
+    {% include "blocks/text-h3.twig" with {
+          text: item.text,
+          sectionClass: sectionClass
+        } %}
+
+  {% elseif item.type == 'h4' %}
+
+    {% include "blocks/text-h4.twig" with {
+          text: item.text,
+          sectionClass: sectionClass
+        } %}
+
+  {% elseif item.type == 'paragraph' %}
+
+    {% include "blocks/text-paragraph.twig" with {
+          text: item.text,
+          sectionClass: sectionClass
+        } %}
+
+  {% elseif item.type == 'thinParagraph' %}
+
+    {% include "blocks/text-thin-paragraph.twig" with {
+          text: item.text,
+          sectionClass: sectionClass
+        } %}
+
+  {% elseif item.type == 'details' %}
+
+    {% include "blocks/text-details.twig" with {
+          client: item.client,
+          services: item.services,
+          sectionClass: sectionClass
+        } %}
+
+  {% elseif item.type == 'quote' %}
+
+    {% include "blocks/text-quote.twig" with {
+          text: item.text,
+          subtext: item.subtext,
+          sectionClass: sectionClass
+        } %}
+
+  {% elseif item.type == 'footnote' %}
+
+    {% include "blocks/text-footnote.twig" with {
+          text: item.text,
+          sectionClass: sectionClass
+        } %}
+
+  {% elseif item.type == 'image' %}
+    {% if item.fixedRatio %}
+      {% set ratio = "strict" %}
+    {% else %}
+
+      {% set ratio = "original" %}
+    {% endif %}
+    {% include "blocks/image.twig" with {
+      image : item.image.one(),
+      size: item.size,
+      ratio: ratio,
+      sectionClass: sectionClass
+    } %}
+
+  {% elseif item.type == 'slider' %}
+
+    {% if item.showNextSlide %}
+      {% include "blocks/slider-full.twig" with {
+            slides: item.slides.all(),
+            sectionClass: sectionClass
+          } %}
+    {% else %}
+      {% include "blocks/slider.twig" with {
+        slides : item.slides.all(),
+        sectionClass: sectionClass
+      } %}
+    {% endif %}
+
+  {% endif %}
+
+{% endfor %}

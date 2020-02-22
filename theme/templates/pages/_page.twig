@@ -3,53 +3,13 @@
 {% extends "core/base.twig" %}
 
 {% block main %}
-  <div class="bg-black text-white">
+  <div class="bg-black text-white min-h-screen">
 
-  <section class="section header-offset"></section>
-
-  {% include "blocks/text-h3.twig" %}
-
-  {% include "blocks/text-h1.twig" %}
-
-  {% include "blocks/text-h2.twig" %}
-
-  {% include "blocks/text-h2.twig" with {
-    subtitle: 'subtitel'
-  } %}
-
-  {% include "blocks/text-details.twig" %}
-
-  {% include "blocks/text-paragraph.twig" %}
-
-  {% include "blocks/text-thin-paragraph.twig" %}
-
-  {% include "blocks/text-quote.twig" %}
-
-  {% include "blocks/text-footnote.twig" %}
-
-  {% include "blocks/image-header.twig" %}
-
-  {% include "blocks/image.twig" with {
-    size : "wide"
-  } %}
-
-  {% include "blocks/image.twig" with {
-    size : "full"
-  } %}
-
-  {% include "blocks/image.twig" with {
-    size : "margin"
-  } %}
-
-  {% include "blocks/slider.twig" with {} %}
-
-  {% include "blocks/slider-full.twig" with { 
-
-  } %}
-
-  {% include "blocks/image.twig" with {
-    size : "margin"
-  } %}
+    <div class="header-offset"></div>
+    
+    {% include "blocks/blocks.twig" with {
+      blocks: entry.blocks.all()
+    } %}
 
   </div>
 

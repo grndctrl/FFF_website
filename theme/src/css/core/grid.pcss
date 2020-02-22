@@ -1,6 +1,6 @@
 .container {
   @apply mx-auto;
-  max-width: 2000px;
+  max-width: 9999px;
   padding-left: $site-offset-sm;
   padding-right: $site-offset-sm;
 }
@@ -77,6 +77,41 @@
   .col {
     padding-left: calc($gutter-lg / 2);
     padding-right: calc($gutter-lg / 2);
+  }
+}
+
+@screen fw {
+  .container {
+    padding-left: $site-offset-fw;
+    padding-right: $site-offset-fw;
+  }
+
+  .section-sm {
+    padding-top: calc($section-offset-sm * 1.2);
+    padding-bottom: calc($section-offset-sm * 1.2);
+  }
+
+  .section-md {
+    padding-top: calc($section-offset-md * 1.2);
+    padding-bottom: calc($section-offset-md * 1.2);
+  }
+
+  .section-lg {
+    padding-top: calc($section-offset-lg * 1.2);
+    padding-bottom: calc($section-offset-lg * 1.2);
+    &.section-title {
+      padding-bottom: 54px;
+    }
+  }
+
+  .row {
+    margin-left: calc($gutter-fw / -2);
+    margin-right: calc($gutter-fw / -2);
+  }
+
+  .col {
+    padding-left: calc($gutter-fw / 2);
+    padding-right: calc($gutter-fw / 2);
   }
 }
 

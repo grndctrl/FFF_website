@@ -7,13 +7,14 @@
   <div class="bg-black text-white pb-6">
 
     <div class="header-offset"></div>
+    {% if entry.headerImage.all()|length > 0 %}
+      {% include "blocks/image-header.twig" with {
+        image: entry.headerImage.one(),
+        ratio: 'strict',
+        sectionClass: ['lg:mt-6']
+      } %}
+    {% endif %}
 
-    {% include "blocks/image-header.twig" with {
-      image: entry.headerImage.one(),
-      ratio: 'strict',
-      sectionClass: ['lg:mt-6']
-    } %}
-      
     <div class="pt-0 md:pt-6"></div>
 
     {% include "blocks/text-h4.twig" with {
@@ -26,57 +27,57 @@
   </div>
 
   <div class="bg-white text-black">
+    <div class="">
 
-    <div class="pt-12 md:pt-0"></div>
+    <div class="pt-12"></div>
 
-    {% include "blocks/text-h3.twig" with {
-      text: 'Our services',
-      sectionClass: ['anim-move-in', 'section-title']
-    } %}
-
-    <div class="pt-6 md:pt-0"></div>
-
-    <section class="pb-12 md:pb-6">
+    <section class="section-lg">
       <div class="container">
 
-        {% for item in entry.services.all() %}
-          <div class="anim-move-in">
-            <div class="row mb-1">
-              <div class="col w-full md:w-10/12 md:ml-1/12 lg:ml-2/12">
-                <p class="font-body font-bold">
-                  {{ item.caption }}
-                </p>
-              </div>
-            </div>
+        <div class="anim-move-in">
+          <div class="row">
 
-            <div class="row {% if loop.index < entry.services.all()|length %}mb-12 md:mb-20{% endif %}">
-              <div class="col w-full md:w-5/12 md:ml-1/12 lg:w-4/12 lg:ml-2/12">
-                <p class="font-body">
+            {% for item in entry.services.all() %}
+
+              {% if loop.index is odd %}
+                {% set marginLeft = "md:ml-1/12 lg:ml-2/12 fw:ml-3/12" %}
+              {% else %}
+                {% set marginLeft = "" %}
+              {% endif %}
+
+              <div class="col w-full mb-12 md:w-5/12 lg:w-4/12 fw:w-3/12 {{ marginLeft }}">
+                <p class="font-h3 pb-4 lg:pb-6">
+                  {{ item.header }}
+                </p>
+                <div class="font-body">
                   {{ item.text|nl2br }}
-                </p>
+                </div>
               </div>
 
-              <div class="col w-full pt-6 md:pt-0 md:w-5/12 md:ml-1/12 lg:w-4/12 lg:ml-2/12">
-                <p class="font-sub text-grey">
-                  {{ item.keywords|nl2br }}
-                </p>
-              </div>
-            </div>
+            {% endfor %}
+
           </div>
-
-        {% endfor %}
+        </div>
 
       </div>
     </section>
+        </div>
 
-    {% include "blocks/text-h3.twig" with {
-      text: 'The team',
-      sectionClass: ['anim-move-in', 'section-title']
+    {% if entry.team.all() | length > 0 %}
+      {% include "blocks/text-h3.twig" with {
+        text: 'People',
+        sectionClass: ['anim-move-in', 'section-title']
+      } %}
+      {% include "blocks/portraits.twig" with {
+        items : entry.team.all()
+      } %}
+    {% endif %}
+
+
+    {% include "blocks/blocks.twig" with {
+      blocks: entry.blocks.all()
     } %}
 
-    {% include "blocks/portraits.twig" with {
-      items : entry.team.all()
-    } %}
 
     {% if entry.vacancy.all() | length > 0 %}
 
@@ -87,18 +88,18 @@
 
             {% for item in entry.vacancy.all() %}
 
-              <div class="col w-full md:w-10/12 md:ml-2/12">
+              <div class="col w-full md:w-10/12 md:ml-2/12 fw:w-6/12 fw:ml-3/12">
                 <p class="text-grey font-body">
                   {{ item.subtitle }}
                 </p>
                 <p class="font-h2 font-medium">
-                {% if item.linkedPage|length > 0 %}
-                <a href="{{ item.linkedPage.one().url }}" class="anim-underline-in">
+                  {% if item.linkedPage | length > 0 %}
+                    <a href="{{ item.linkedPage.one().url }}" class="anim-underline-in">
+                      {{ item.positionTitle }}
+                    </a>
+                  {% else %}
                     {{ item.positionTitle }}
-                  </a>
-                {% else %}
-                  {{ item.positionTitle }}
-                {% endif %}
+                  {% endif %}
 
                 </p>
               </div>
@@ -114,6 +115,8 @@
 
     <div class="pt-12 lg:pt-0 bg-black"></div>
 
+
+  
   </div>
 
 {% endblock %}

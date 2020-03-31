@@ -1,4 +1,4 @@
 node_modules
 vendor
-server/wp-content/uploads
+server/public/uploads
 dist

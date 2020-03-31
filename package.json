@@ -17,7 +17,8 @@
     "dev": "webpack --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "setup": "npm run craft-compose; npm run craft-plugins; npm run craft-config; npm run craft-install; npm run craft-build; clear; echo \"\nCompleted!\n\nVisit \\x1b[4m\\x1b[34mhttp://localhost:8080/admin\\x1b[0m to sync project.yaml and finish setup.\n\n\"",
-    "postinstall": "docker-compose build"
+    "postinstall": "docker-compose build",
+    "rsync": "rsync -r -v --exclude-from=./config/.rsyncexclude \"$(npx json -f './config/rsync.json' 'source')\" \"$(npx json -f './config/rsync.json' 'target')\""
   },
   "keywords": [],
   "author": "",

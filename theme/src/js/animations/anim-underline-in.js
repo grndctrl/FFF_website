@@ -3,7 +3,36 @@ import { CoreModule } from '../core/core-module';
 class AnimUnderlineIn extends CoreModule {
   init(options) {
     let target = options.target ? options.target : '.anim-underline-in'
+
+    this.otherElements = []
+
+    let links
+
+    links = document.querySelectorAll('.font-h1 p a')
+    links.forEach(link => {
+      this.otherElements.push(link)
+    })
+
+    links = document.querySelectorAll('.font-h2 p a')
+    links.forEach(link => {
+      this.otherElements.push(link)
+    })
+
+    links = document.querySelectorAll('.font-h3 p a')
+    links.forEach(link => {
+      this.otherElements.push(link)
+    })
+
+    links = document.querySelectorAll('.font-h4 p a')
+    links.forEach(link => {
+      this.otherElements.push(link)
+    })
+    this.otherElements.forEach(element => {
+      element.classList.add('anim-underline-in')
+    })
+
     this.elements = document.querySelectorAll(target)
+
     this.parents = document.querySelectorAll('.anim-underline-in-parent-trigger')
     this.triggers = document.querySelectorAll('.anim-underline-in-trigger')
 

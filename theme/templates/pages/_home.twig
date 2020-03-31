@@ -30,8 +30,12 @@
     
     {% endif %}
 
+    {% include "blocks/blocks.twig" with {
+      blocks: entry.blocks.all()
+    } %}
+
   </div>
 
-      <div class="pt-12 lg:pt-0 bg-black"></div>
+  <div class="pt-12 lg:pt-0 bg-black"></div>
 
 {% endblock %}

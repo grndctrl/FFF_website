@@ -4,7 +4,7 @@
 
 {# {% set articles = entry.articles.all() %} #}
 
-{% paginate entry.articles.limit(4) as pageInfo, articles %}
+{% paginate entry.articles.limit(10) as pageInfo, articles %}
 
 {% block main %}
 

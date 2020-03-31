@@ -50,6 +50,11 @@
           </div>
         </section>
 
+      {% elseif content.type == "ctaButton" %}
+          {% include "blocks/cta-button.twig" with {
+          text: content.text,
+          buttonLabel: content.buttonLabel
+        } %}
       {% endif %}
 
     {% endfor %}

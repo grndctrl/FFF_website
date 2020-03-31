@@ -25,11 +25,13 @@
           {% for item in entry.cases.all() %}
 
             {% set delay = 0 %}
+            {% set marginLeft = 'fw:ml-1/12' %}
             {% if loop.index is even %}
               {% set delay = 200 %}
+              {% set marginLeft = '' %}
             {% endif %}
 
-            <div class="col w-full lg:w-6/12 pb-32 anim-move-in" data-anim-delay="{{ delay }}">
+            <div class="col w-full lg:w-6/12 fw:w-5/12 pb-32 {{ marginLeft }} anim-move-in" data-anim-delay="{{ delay }}">
               <a href="{{ item.url() }}" class="anim-underline-in-trigger">
                 <div class="pb-3 md:pb-6">
                   {% include "components/figure.twig" with {

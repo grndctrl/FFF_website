@@ -63,15 +63,30 @@
     </section>
         </div>
 
-    {% if entry.team.all() | length > 0 %}
-      {% include "blocks/text-h3.twig" with {
+    {# {% if entry.team.all() | length > 0 %} #}
+      {# {% include "blocks/text-h3.twig" with {
         text: 'People',
-        sectionClass: ['anim-move-in', 'section-title']
-      } %}
+        sectionClass: ['anim-move-in', 'section-title', 'section-md']
+      } %} #}
+
+      <section class="section-lg anim-move-in section-title" style="padding-top: 0">
+        <div class="container">
+
+          <div class="row">
+            <div class="col w-full lg:w-8/12 lg:mx-2/12 fw:w-6/12 fw:mx-3/12">
+              <h3 class="font-h3">
+                People
+              </h3>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
       {% include "blocks/portraits.twig" with {
         items : entry.team.all()
       } %}
-    {% endif %}
+    {# {% endif %} #}
 
 
     {% include "blocks/blocks.twig" with {

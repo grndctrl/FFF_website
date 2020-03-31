@@ -23,7 +23,7 @@ module.exports = {
         grey: '#9E9E9E'
       },
       screens: {
-        'fw': '100rem'
+        'fw': '125rem'
       },
       spacing: {
         '1/24': '4.16667%',

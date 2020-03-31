@@ -75,7 +75,7 @@
     <figure class="{{ figureClass|join(' ') }} {{ size }} {{ ratio }} {% if orientation is defined %}{{ orientation }}{% else %}landscape{% endif %}">
       <div class="figure-sizer"></div>
       {% if image.kind == "video" %}
-        <video muted loop>
+        <video autoplay loop muted playsinline>
           <source src="{{ siteUrl }}{{ image.url }}" type="video/mp4">
         </video>
       {% else %}

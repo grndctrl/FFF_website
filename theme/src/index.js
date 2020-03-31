@@ -15,7 +15,7 @@ import { animMoveIn, animFadeIn, animOpenSesame, animLogo, animHero, animMousePe
   core.attach(images, {}, true)
   core.attach(slider, {}, true)
   core.attach(safariHeaderFix, {})
-  core.attach(ajaxModule, {})
+  core.attach(ajaxModule, {}, true)
 
   core.attach(animMoveIn, { target: '.anim-move-in' }, true)
   core.attach(animFadeIn, {}, true)

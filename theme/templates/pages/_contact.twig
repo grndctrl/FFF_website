@@ -4,7 +4,7 @@
 
 {% block main %}
 
-  <div class="bg-black text-white min-h-screen">
+  <div class="bg-black text-white min-h-screen pb-32">
 
     <div class="header-offset"></div>
 
@@ -14,23 +14,24 @@
       sectionClass: 'lg:mt-6'
     } %}
 
-    {% include "blocks/image.twig" with {
-      size: 'wide',
-      ratio: 'original',
-      image: entry.headerImage.one()
+    {% if entry.headerImage | length > 0 %}
+      {% include "blocks/image.twig" with {
+        size : "wide",
+        ratio: "original",
+        image: entry.headerImage.one()
+      } %}
+    {% endif %}
+
+    {% include "blocks/blocks.twig" with {
+      blocks : entry.blocks.all()
     } %}
-
-{# blocks start #}
-{# blocks end #}
-
-
 
   </div>
 
   <style>
-  .footer-main {
-    display: none;
-  }
+    .footer-main {
+      display: none;
+    }
   </style>
 
 {% endblock %}

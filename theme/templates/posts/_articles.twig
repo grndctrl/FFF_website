@@ -4,94 +4,105 @@
 
 {% block main %}
 
-  <div class="bg-white text-black min-h-screen">
+	<div class="bg-white text-black min-h-screen">
 
-  <div class="header-offset"></div>
+		<div class="header-offset"></div>
 
-    {% include "blocks/text-h2.twig" with {
+		{% include "blocks/text-h2.twig" with {
       text: entry.title,
       subtitle: entry.postDate|date("F d, Y")
     } %}
 
-    {% for content in entry.articleContent.all() %}
+		{% for content in entry.articleContent.all() %}
 
-      {% if content.type == "text" %}
+			{% if content.type == "text" %}
 
-        {% include "blocks/text-paragraph.twig" with {
+				{% include "blocks/text-paragraph.twig" with {
         text: content.text
       } %}
 
-      {% elseif content.type == "images" %}
+			{% elseif content.type == "images" %}
 
-        {% for image in content.images.all() %}
+				{% for image in content.images.all() %}
 
-          {% include "blocks/image.twig" with {
+					{% include "blocks/image.twig" with {
           size: 'margin',
           ratio: 'original',
           sectionClass: 'section-md',
           image: image
         } %}
 
-        {% endfor %}
+				{% endfor %}
 
-      {% elseif content.type == "html" %}
+			{% elseif content.type == "html" %}
 
-        <section class="section-md">
-          <div class="container">
+				<section class="section-md">
+					<div class="container">
 
-            <div class="row">
-              <div class="col w-full md:w-10/12 md:mx-1/12 lg:w-8/12 lg:mx-2/12">
-                <div class="font-paragraph">
-                  {{ content.html|raw }}
-                </div>
-              </div>
-            </div>
+						<div class="row">
+							<div class="col w-full md:w-10/12 md:mx-1/12 lg:w-8/12 lg:mx-2/12">
+								<div class="font-paragraph">
+									{{ content.html|raw }}
+								</div>
+							</div>
+						</div>
 
-          </div>
-        </section>
+					</div>
+				</section>
 
-      {% elseif content.type == "ctaButton" %}
-          {% include "blocks/cta-button.twig" with {
+			{% elseif content.type == "ctaButton" %}
+
+				{% include "blocks/cta-button.twig" with {
           text: content.text,
           buttonLabel: content.buttonLabel
         } %}
-      {% endif %}
 
-    {% endfor %}
+			{% elseif content.type == "fullWidthImage" %}
 
-    {% set articles = craft.entries.section("articles").all() %}
+				{% include "blocks/image.twig" with {
+				          size: 'wide',
+				          ratio: 'fixed-ratio',
+				          sectionClass: 'section-lg',
+				          image: content.image.first()
+				        } %}
 
-    {% set index = 0 %}
+			{% endif %}
 
-    {% for item in articles %}
+		{% endfor %}
 
-      {% if item.id == entry.id %}
-        {% set index = loop.index0 %}
-      {% endif %}
+		{% set articles = craft.entries.section("articles").all() %}
 
-    {% endfor %}
+		{% set index = 0 %}
 
-    {% set indexNext = index + 1 %}
-    {% if indexNext >= articles | length %}
-      {% set indexNext = 0 %}
-    {% endif %}
+		{% for item in articles %}
 
-    <div class="py-8 mt-18 lg:pb-32 bg-void text-white lg:text-black lg:bg-white">
-      <div class="container">
-        <div class="row">
-          <div class="col w-full lg:w-8/12 mx-auto">
-            <p class="font-h2">
-              <a href="{{ articles[indexNext].url }}" class="anim-underline-in">
-                Volgend artikel
-              </a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+			{% if item.id == entry.id %}
+				{% set index = loop.index0 %}
+			{% endif %}
 
-    <div class="pt-12 lg:pt-0 bg-black"></div>
+		{% endfor %}
 
-  </div>
+		{% set indexNext = index + 1 %}
+		{% if indexNext >= articles | length %}
+			{% set indexNext = 0 %}
+		{% endif %}
+
+		<div class="py-8 mt-18 lg:pb-32 bg-void text-white lg:text-black lg:bg-white">
+			<div class="container">
+				<div class="row">
+					<div class="col w-full lg:w-8/12 mx-auto">
+						<p class="font-h2">
+							<a href="{{ articles[indexNext].url }}" class="anim-underline-in">
+								Volgend artikel
+							</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="pt-12 lg:pt-0 bg-black"></div>
+
+	</div>
 
 {% endblock %}

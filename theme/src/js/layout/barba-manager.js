@@ -28,10 +28,10 @@ class BarbaManager extends CoreModule {
               scripts.forEach((script) => {
                 axios
                   .get(script.getAttribute('src'))
-                  .then(function(response) {
+                  .then(function (response) {
                     eval(response.data)
                   })
-                  .catch(function(error) {
+                  .catch(function (error) {
                     console.log(error)
                   })
               })
@@ -49,7 +49,9 @@ class BarbaManager extends CoreModule {
         ],
         prevent: ({ href }) => href.charAt(0) === '#'
       })
+      console.log('barba init')
     } catch (error) {
+      console.log('barba error', error)
       return { id: this.id, status: false, message: error }
     }
 

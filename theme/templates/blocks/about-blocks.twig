@@ -10,16 +10,63 @@
 
 	{% elseif item.backgroundColor == 'black' %}
 		{% set sectionClass = ['anim-move-in', 'bg-black', 'text-white'] %}
+
 	{% else %}
 
 		{% set sectionClass = ['anim-move-in'] %}
 	{% endif %}
 
 	{% if loop.index0 < 1 %}
-		{% set sectionClass = "" %}
+		{% if item.backgroundColor == "white" %}
+
+			{% set sectionClass = ['bg-white', 'text-black'] %}
+
+		{% elseif item.backgroundColor == 'black' %}
+			{% set sectionClass = ['bg-black', 'text-white'] %}
+		{% else %}
+
+			{% set sectionClass = "" %}
+		{% endif %}
 	{% endif %}
 
-	{% if item.type == "ctaButton" %}
+
+	{% if item.type == "headerImage" %}
+
+		{% include "blocks/image-header.twig" with {
+      image: item.image.one(),
+      ratio: 'strict',
+      sectionClass: ['lg:mt-6']
+    } %}
+
+	{% elseif item.type == "services" %}
+
+		{% include "blocks/about-services.twig" with {
+      services: item.row,
+      sectionClass: sectionClass
+    } %}
+
+	{% elseif item.type == "servicesAlternative" %}
+
+		{% include "blocks/about-services-alternative.twig" with {
+      services: item.row,
+      sectionClass: sectionClass
+    } %}
+
+	{% elseif item.type == "team" %}
+
+		{% include "blocks/about-team.twig" with {
+      team: item.member,
+      sectionClass: sectionClass
+    } %}
+
+	{% elseif item.type == "vacancy" %}
+
+		{% include "blocks/about-vacancy.twig" with {
+      vacancy: item.position,
+      sectionClass: sectionClass
+    } %}
+
+	{% elseif item.type == "ctaButton" %}
 
 		{% include "blocks/cta-button.twig" with {
           text: item.text,
@@ -112,29 +159,15 @@
 
 		{% if item.showNextSlide %}
 			{% include "blocks/slider-full.twig" with {
-          slides: item.slides.all(),
-          sectionClass: sectionClass
-        } %}
+            slides: item.slides.all(),
+            sectionClass: sectionClass
+          } %}
 		{% else %}
 			{% include "blocks/slider.twig" with {
         slides : item.slides.all(),
         sectionClass: sectionClass
       } %}
 		{% endif %}
-
-	{% elseif item.type == 'smoothSlider' %}
-
-		{% include "blocks/smooth-slider.twig" with {
-        slides: item.slides.all(),
-        sectionClass: sectionClass
-      } %}
-
-	{% elseif item.type == 'textSlider' %}
-
-		{% include "blocks/text-slider.twig" with {
-      slides: item.slides.all(),
-      backgroundColor: item.backgroundColor
-    } %}
 
 	{% endif %}
 

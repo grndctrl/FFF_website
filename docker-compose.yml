@@ -1,24 +1,22 @@
-version: '3'
+version: '3.7'
 services:
   web:
     build:
-        context: './config/docker/php'
-        dockerfile: './Dockerfile'
+      context: './config/docker/php'
+      dockerfile: './Dockerfile'
     ports:
-        - '8080:80'
-        - '445:443'
-
+      - '8080:80'
+      - '9090:8080'
     volumes:
-        - './server/public:/var/www/html/public'
-        - './server/private:/var/www/html/private'
+      - './server/html:/var/www/html'
+      - './server/public:/var/www/html/public'
+      - './server/private:/var/www/private'
     environment:
-        ENVIRONMENT: dev
-        DB_SERVER: database
-        DB_USER: craft
-        DB_PASSWORD: craft
-        DB_DATABASE: craft
-        DB_TABLE_PREFIX: fff_
-        APACHE_DOCUMENT_ROOT: '/var/www/html/public'
+      ENVIRONMENT: dev
+      DB_DSN: mysql:host=database;port=3306;dbname=craft
+      DB_USER: craft
+      DB_PASSWORD: craft
+      DB_TABLE_PREFIX: fff_
 
   phpmyadmin:
     depends_on:
@@ -28,10 +26,10 @@ services:
       - '8081:80'
     environment:
       PMA_HOST: database
-      MYSQL_ROOT_PASSWORD: password 
+      MYSQL_ROOT_PASSWORD: password
     links:
       - database:database
-      
+
   database:
     image: mariadb
     ports:

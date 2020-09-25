@@ -1,5 +1,9 @@
 module.exports = {
   theme: {
+    future: {
+      removeDeprecatedGapUtilities: true,
+      purgeLayersByDefault: true,
+    },
     fontFamily: {
       sans: 'BasisGrotesquePro, sans-serif',
     },

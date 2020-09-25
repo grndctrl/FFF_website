@@ -1,0 +1,33 @@
+.js-cursor {
+  opacity: 0;
+  position: fixed;
+  width: 58px;
+  margin-left: -29px;
+  margin-top: -16px;
+  height: 33px;
+  pointer-events: none;
+  transform: scale(0);
+  transform-origin: center;
+  transition: opacity 200ms ease, transform 400ms ease;
+
+  &.js-active {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.cursor-replacement {
+  display: none;
+  opacity: 0;
+  cursor: none;
+  margin-left: 29px;
+  margin-right: 29px;
+  margin-top: 17px;
+  margin-bottom: 17px;
+}
+
+@screen lg {
+  .cursor-replacement {
+    display: block;
+  }
+}

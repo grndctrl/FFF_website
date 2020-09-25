@@ -4,48 +4,76 @@ class VideoPlayer extends CoreModule {
   init() {
     const scenes = []
     const events = []
+    this.videos = []
 
-    events.push(
-      new CoreEventListener(
-        'barba-before-enter',
-        (event) => {
+    this.videos = document.querySelectorAll('video')
 
-          // console.log("anim-complete for:", event.target)
-          let videos = document.querySelectorAll('video')
-
-          videos.forEach(video => {
-
-            if (video) {
-              video.play()
-            }
-          })
-        }
+    this.videos.forEach(video => {
+      console.log(video)
+      scenes.push(
+        new CoreScrollScene({
+          offset: () => {
+            return 1
+          },
+          triggerElement: video,
+          triggerHook: 0.5,
+          enter: (event) => {
+            console.log('video enter')
+            video.play()
+          },
+          leave: (event) => {
+            console.log('video leave')
+            video.pause()
+          }
+        })
       )
-    )
-    super.eventListeners = events
-    events.push(
-      new CoreEventListener(
-        'core-initialized',
-        (event) => {
+    })
+    super.scrollScenes = scenes
 
-          // console.log("anim-complete for:", event.target)
-          let videos = document.querySelectorAll('video')
+    // events.push(
+    //   new CoreEventListener(
+    //     'barba-before-enter',
+    //     (event) => {
 
-          videos.forEach(video => {
+    //       // console.log("anim-complete for:", event.target)
+    //       let videos = document.querySelectorAll('video')
 
-            if (video) {
-              video.play()
-            }
-          })
-        }
-      )
-    )
-    super.eventListeners = events
+    //       videos.forEach(video => {
+
+    //         if (video) {
+    //           video.play()
+    //         }
+    //       })
+    //     }
+    //   )
+    // )
+
+    // events.push(
+    //   new CoreEventListener(
+    //     'core-initialized',
+    //     (event) => {
+
+    //       // console.log("anim-complete for:", event.target)
+    //       let videos = document.querySelectorAll('video')
+
+    //       videos.forEach(video => {
+
+    //         if (video) {
+    //           video.play()
+    //         }
+    //       })
+    //     }
+    //   )
+    // )
+    // super.eventListeners = events
 
     return super.init()
   }
 
   destroy() {
+    this.videos.forEach(video => {
+      video.pause()
+    })
     return super.destroy()
   }
 }

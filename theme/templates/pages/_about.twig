@@ -1,137 +1,24 @@
-{# Default page #}
+{# About page #}
 
 {% extends "core/base.twig" %}
 
 {% block main %}
 
-  <div class="bg-black text-white pb-6">
+	{% if entry.pageBlackWhite %}
+		{% set pageColor = 'bg-white text-black' %}
+	{% else %}
+		{% set pageColor = 'bg-black text-white' %}
+	{% endif %}
 
-    <div class="header-offset"></div>
-    {% if entry.headerImage.all()|length > 0 %}
-      {% include "blocks/image-header.twig" with {
-        image: entry.headerImage.one(),
-        ratio: 'strict',
-        sectionClass: ['lg:mt-6']
-      } %}
-    {% endif %}
+	<div class="{{ pageColor }}">
 
-    <div class="pt-0 md:pt-6"></div>
+		<div class="header-offset"></div>
 
-    {% include "blocks/text-h4.twig" with {
-      text: entry.introText,
-      sectionClass: 'anim-move-in'
+		{% include "blocks/about-blocks.twig"with {
+      blocks: entry.aboutBlocks.all()
     } %}
 
-    <div class="pt-6 md:pt-6"></div>
-
-  </div>
-
-  <div class="bg-white text-black">
-    <div class="">
-
-    <div class="pt-12"></div>
-
-    <section class="section-lg">
-      <div class="container">
-
-        <div class="anim-move-in">
-          <div class="row">
-
-            {% for item in entry.services.all() %}
-
-              {% if loop.index is odd %}
-                {% set marginLeft = "md:ml-1/12 lg:ml-2/12 fw:ml-3/12" %}
-              {% else %}
-                {% set marginLeft = "" %}
-              {% endif %}
-
-              <div class="col w-full mb-12 md:w-5/12 lg:w-4/12 fw:w-3/12 {{ marginLeft }}">
-                <p class="font-h3 pb-4 lg:pb-6">
-                  {{ item.header }}
-                </p>
-                <div class="font-body">
-                  {{ item.text|nl2br }}
-                </div>
-              </div>
-
-            {% endfor %}
-
-          </div>
-        </div>
-
-      </div>
-    </section>
-        </div>
-
-    {# {% if entry.team.all() | length > 0 %} #}
-      {# {% include "blocks/text-h3.twig" with {
-        text: 'People',
-        sectionClass: ['anim-move-in', 'section-title', 'section-md']
-      } %} #}
-
-      <section class="section-lg anim-move-in section-title" style="padding-top: 0">
-        <div class="container">
-
-          <div class="row">
-            <div class="col w-full lg:w-8/12 lg:mx-2/12 fw:w-6/12 fw:mx-3/12">
-              <h3 class="font-h3">
-                People
-              </h3>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {% include "blocks/portraits.twig" with {
-        items : entry.team.all()
-      } %}
-    {# {% endif %} #}
-
-
-    {% include "blocks/blocks.twig" with {
-      blocks: entry.blocks.all()
-    } %}
-
-
-    {% if entry.vacancy.all() | length > 0 %}
-
-      <section class="pt-6 pb-24 md:pb-32 anim-move-in">
-        <div class="container">
-
-          <div class="row">
-
-            {% for item in entry.vacancy.all() %}
-
-              <div class="col w-full md:w-10/12 md:ml-2/12 fw:w-6/12 fw:ml-3/12">
-                <p class="text-grey font-body">
-                  {{ item.subtitle }}
-                </p>
-                <p class="font-h2 font-medium">
-                  {% if item.linkedPage | length > 0 %}
-                    <a href="{{ item.linkedPage.one().url }}" class="anim-underline-in">
-                      {{ item.positionTitle }}
-                    </a>
-                  {% else %}
-                    {{ item.positionTitle }}
-                  {% endif %}
-
-                </p>
-              </div>
-
-            {% endfor %}
-
-          </div>
-
-        </div>
-      </section>
-
-    {% endif %}
-
-    <div class="pt-12 lg:pt-0 bg-black"></div>
-
-
-  
-  </div>
+		<div class="pt-12 lg:pt-0 bg-black"></div>
+	</div>
 
 {% endblock %}

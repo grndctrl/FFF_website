@@ -6,4 +6,4 @@ const scrollController = new ScrollMagic.Controller({
   }
 })
 
-export { scrollController }
+export { scrollController, ScrollMagic }

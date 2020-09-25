@@ -17,9 +17,10 @@ class CoreScrollScene {
         return options.offset
       }
     }
-    this.triggerHook = options.triggerHook || 1
-    this.enter = options.enter || (() => {})
-    this.leave = options.leave || (() => {})
+
+    this.triggerHook = options.triggerHook === 0 ? 0 : options.triggerHook || 1
+    this.enter = options.enter || (() => { })
+    this.leave = options.leave || (() => { })
     this.once = options.once || false
   }
 
@@ -38,7 +39,6 @@ class CoreScrollScene {
     })
     this.scene.on('leave', this.leave)
 
-    console.log(this.scene)
     scrollController.addScene(this.scene)
   }
 

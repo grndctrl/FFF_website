@@ -1,0 +1,26 @@
+{% if sectionClass is not defined %}
+	{% set sectionClass = [''] %}
+{% endif %}
+
+{% if text is not defined %}
+	{% set text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit' %}
+{% endif %}
+
+<section class="section-md {{ sectionClass|join(' ') }} section-title" style="padding-bottom: 0">
+	<div class="container">
+
+		<div class="row">
+			<div class="col w-full lg:w-8/12 lg:mx-2/12 fw:w-6/12 fw:mx-3/12">
+				<h3 class="font-h3 section-md" style="padding-top: 0">
+					People
+				</h3>
+			</div>
+		</div>
+
+	</div>
+
+	{% include "blocks/portraits.twig" with {
+        items : team.all()
+      } %}
+
+</section>

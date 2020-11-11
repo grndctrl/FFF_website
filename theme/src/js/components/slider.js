@@ -21,10 +21,10 @@ class Slider extends CoreModule {
           spaceBetween: 12,
           breakpoints: {
             768: {
-              spaceBetween: 44
+              spaceBetween: 44,
             },
             1600: {
-              spaceBetween: 64
+              spaceBetween: 64,
             },
           },
           navigation: {
@@ -60,9 +60,10 @@ class Slider extends CoreModule {
               slidesOffsetAfter: 30,
             },
             2000: {
+              slidesPerView: 3.5,
               slidesOffsetBefore: 96,
               slidesOffsetAfter: 96,
-              spaceBetween: 64
+              spaceBetween: 64,
             },
           },
           navigation: {
@@ -79,10 +80,10 @@ class Slider extends CoreModule {
           spaceBetween: 12,
           breakpoints: {
             768: {
-              spaceBetween: 44
+              spaceBetween: 44,
             },
             1600: {
-              spaceBetween: 64
+              spaceBetween: 64,
             },
           },
           navigation: {

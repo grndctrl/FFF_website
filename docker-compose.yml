@@ -12,7 +12,7 @@ services:
       - './server/public:/var/www/html/public'
       - './server/private:/var/www/private'
     environment:
-      ENVIRONMENT: dev
+      ENVIRONMENT: 'dev'
       DB_DSN: mysql:host=database;port=3306;dbname=craft
       DB_USER: craft
       DB_PASSWORD: craft

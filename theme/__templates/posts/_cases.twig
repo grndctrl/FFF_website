@@ -1,0 +1,64 @@
+{# Default page #}
+
+{% extends "core/base.twig" %}
+
+{% block main %}
+
+  {% if entry.pageBlackWhite %}
+    {% set pageColor = 'bg-white text-black' %}
+  {% else %}
+    {% set pageColor = 'bg-black text-white' %}
+  {% endif %}
+  
+
+  <div class="{{ pageColor }} min-h-screen">
+
+    <div class="header-offset"></div>
+
+
+    {% include "blocks/image-header.twig" with {
+      image: entry.headerImage.one(),
+      ratio: 'strict',
+      orientation: 'landscape',
+      sectionClass: ['lg:mt-6']
+    } %}
+
+    {% include "blocks/blocks.twig" with {
+      blocks: entry.blocks.all()
+    } %}
+
+    {% set cases = craft.entries.section("cases").all() %}
+    {% set index = 0 %}
+
+    {% for item in cases %}
+
+      {% if item.id == entry.id %}
+        {% set index = loop.index0 %}
+      {% endif %}
+
+    {% endfor %}
+
+    {% set indexNext = index + 1 %}
+    {% if indexNext >= cases | length %}
+      {% set indexNext = 0 %}
+    {% endif %}
+
+    <div class="py-8 mt-18 lg:pb-32 bg-void lg:bg-black">
+      <div class="container">
+        <div class="row">
+          <div class="col w-full lg:w-8/12 mx-auto">
+            <p class="font-h2">
+              <a href="{{ cases[indexNext].url }}" class="anim-underline-in">
+                Next case
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+      <div class="pt-12 lg:pt-0 bg-black"></div>
+
+{% endblock %}

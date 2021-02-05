@@ -1,0 +1,98 @@
+{% if sectionClass is not defined %}
+	{% set sectionClass = [""] %}
+{% endif %}
+
+{% if backgroundColor is not defined %}
+	{% set backgroundColor = "white" %}
+{% endif %}
+
+{% if backgroundColor == 'pageDefault' %}
+	{% set backgroundColor = "black" %}
+{% endif %}
+
+{% if slides is not defined %}
+	{% set slides = ["", "", ""] %}
+{% endif %}
+
+
+<section
+	class="my-16 {{ sectionClass|filter(v => v != 'anim-move-in')|join(' ') }}">
+
+	<!-- Slider main container -->
+	<div class="text-slider">
+
+		<div class="text-slider-container before-enter">
+			<div class="text-slider-indicator">
+				<svg width="92px" height="92px" viewbox="0 0 92 92" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="transform: rotate(-90deg); transform-origin: center">
+					<g stroke="none" fill="none" fill-rule="evenodd">
+						{% if backgroundColor == "black" %}
+							<circle class="circle-fill" fill="#000000" cx="46" cy="46" r="45"></circle>
+							<circle class="circle-end" fill="#F9F9F9" cx="46" cy="46" r="45"></circle>
+							<circle class="circle-stroke" stroke="#F9F9F9" stroke-width="2" cx="46" cy="46" r="45"></circle>
+						{% else %}
+							<circle class="circle-fill" fill="#F9F9F9" cx="46" cy="46" r="45"></circle>
+							<circle class="circle-end" fill="#000000" cx="46" cy="46" r="45"></circle>
+							<circle class="circle-stroke" stroke="#000000" stroke-width="2" cx="46" cy="46" r="45"></circle>
+						{% endif %}
+					</g>
+				</svg>
+
+				<div class="progress font-body">
+					<span class="current"></span>/<span class="total"></span>
+				</div>
+
+			</div>
+			<div class="scroll-slides">
+
+				{% for slide in slides %}
+
+					<div class="text-slider-slide section-md">
+						<div class="container h-full">
+							<div class="h-full lg:w-10/12 flex items-end">
+								<div class="font-h1 mb-16 md:mb-0">
+									<h2 class="">{{ slide.text|nl2br }}</h2>
+									<h2 class="text-grey">{{ slide.grayText|nl2br }}</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				{% endfor %}
+
+				{# <div class="text-slider-slide section-md js-active">
+																																																																																													<div class="container h-full">
+																																																																																														<div class="h-full w-10/12 flex items-end">
+																																																																																															<div class="font-h2">
+																																																																																																<h2 class="">Whatever the industry needs.</h2>
+																																																																																																<h2 class="text-grey">Topcast is a new podcast label<br>focussing on high quality productions.</h2>
+																																																																																															</div>
+																																																																																														</div>
+																																																																																													</div>
+																																																																																												</div>
+																																																																																								
+																																																																																												<div class="text-slider-slide section-md">
+																																																																																													<div class="container h-full">
+																																																																																														<div class="h-full w-10/12 flex items-end">
+																																																																																															<div class="font-h2">
+																																																																																																<h2 class="">Lorem ipsum dolor sit amet</h2>
+																																																																																																<h2 class="text-grey">Quas reprehenderit deserunt eaque officia voluptates veniam totam hic numquam laboriosam blanditiis autem modi.</h2>
+																																																																																															</div>
+																																																																																														</div>
+																																																																																													</div>
+																																																																																												</div>
+																																																																																												<div class="text-slider-slide section-md">
+																																																																																													<div class="container h-full">
+																																																																																														<div class="h-full w-10/12 flex items-end">
+																																																																																															<div class="font-h2">
+																																																																																																<h2 class="">Laboriosam blanditiis autem modi.</h2>
+																																																																																																<h2 class="text-grey">Nisi assumenda omnis ducimus suscipit accusantium recusandae incidunt.</h2>
+																																																																																															</div>
+																																																																																														</div>
+																																																																																													</div>
+																																																																																												</div> #}
+			</div>
+
+		</div>
+
+	</div>
+</section>

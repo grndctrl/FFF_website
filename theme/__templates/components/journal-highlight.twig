@@ -1,0 +1,46 @@
+{% if sectionClass is not defined %}
+  {% set sectionClass = [""] %}
+{% endif %}
+
+<section class="pt-24 pb-12 bg-white text-black {{ sectionClass|join(' ') }}">
+  <div class="container">
+    <div class="row">
+
+      {% for article in journalHighlights %}
+
+        {% if loop.index is odd %}
+          {% set marginLeft = ' fw:ml-1/12' %}
+          {% else %}
+            
+          {% set marginLeft = '' %}
+        {% endif %}
+
+        <div class="col w-full md:w-6/12 pb-6 md:pb-0 fw:w-5/12{{marginLeft}}">
+          <div class="anim-underline-in-trigger">
+            <a href="{{ article.url() }}">
+              {% include "components/figure.twig" with {
+                figureClass : "desaturated",
+                image: article.thumbnail.one(),
+                ratio: 'strict',
+                size: 'overview',
+                orientation: 'landscape'
+              } %}
+            </a>
+          </div>
+
+          <p class="font-body pt-6 text-grey">
+            {{ article.postDate|date("F d, Y") }}
+          </p>
+          <h3 class="font-h3 font-medium pb-12">
+            <a href="{{ article.url() }}" class="anim-underline-in anim-underline-in-target">
+              {{ article.title }}
+            </a>
+          </h3>
+
+        </div>
+
+      {% endfor %}
+
+    </div>
+  </div>
+</section>

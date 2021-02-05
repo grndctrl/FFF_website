@@ -1,0 +1,63 @@
+{# 404 page #}
+
+<!DOCTYPE html>
+<html class="bg-black" lang="en">
+	<head>
+		{% include "core/metadata.twig" %}
+
+		{% hook "seo" %}
+	</head>
+
+	<body class="bg-black text-white">
+		<div class="barba-wipe z-40"></div>
+
+		{% include "components/cursor.twig" %}
+
+		{% block header %}
+			{% include "layout/header.twig" %}
+		{% endblock %}
+
+		<div class="min-h-screen flex flex-col justify-between">
+			<div class="w-full header-offset">
+				<section class="section-md">
+					<div class="container">
+
+						<div class="row">
+							<div class="col w-full lg:w-10/12 lg:ml-2/12 fw:w-9/12 fw:mx-3/12">
+
+								<p class="font-body mb-1">
+									404
+								</p>
+								<h2 class="font-h2 font-medium">
+									Uh&mdash;oh, the page you're looking<br class="hidden md:block"/>
+									for doesn't seem to exist.
+								</h2>
+							</div>
+						</div>
+
+					</div>
+				</section>
+			</div>
+			<div class="w-full">
+				{% block footer %}
+					{% include "layout/footer.twig" %}
+				{% endblock %}
+			</div>
+		</div>
+
+		<script src="{{ siteUrl }}/dist/js/common.js"></script>
+		<script src="{{ siteUrl }}/dist/js/main.js"></script>
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148565228-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+function gtag() {
+dataLayer.push(arguments);
+}
+gtag(' js', new date());
+
+gtag(' config', ' UA-148565228-1');
+		</script>
+	</body>
+</html>

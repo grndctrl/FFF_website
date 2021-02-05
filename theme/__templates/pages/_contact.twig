@@ -1,0 +1,37 @@
+{# Default page #}
+
+{% extends "core/base.twig" %}
+
+{% block main %}
+
+  <div class="bg-black text-white min-h-screen pb-32">
+
+    <div class="header-offset"></div>
+
+    {% include "blocks/text-h2.twig" with {
+      subtitle: entry.subtitle,
+      text: entry.introText,
+      sectionClass: 'lg:mt-6'
+    } %}
+
+    {% if entry.headerImage | length > 0 %}
+      {% include "blocks/image.twig" with {
+        size : "wide",
+        ratio: "original",
+        image: entry.headerImage.one()
+      } %}
+    {% endif %}
+
+    {% include "blocks/blocks.twig" with {
+      blocks : entry.blocks.all()
+    } %}
+
+  </div>
+
+  <style>
+    .footer-main {
+      display: none;
+    }
+  </style>
+
+{% endblock %}

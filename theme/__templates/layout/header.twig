@@ -1,0 +1,100 @@
+{# <header class="section header-main header-unpin z-50">
+  <div class="container">
+
+    {% block header %}
+
+      {% set query = craft.globalSets().handle('header') %}
+      {% set headerEntry = query.one() %}
+
+      <nav id="nav-main" class="nav-main flex justify-between items-center" role="navigation">
+        <div class="branding">
+          <a href="{{ siteUrl }}">
+            <span class="font-bold text-xl uppercase tracking-widest"> fff </span>
+          </a>
+        </div>
+
+        <div class="nav-menu text-3xl lg:text-base z-40">
+          {% include "layout/nav.twig" %}
+        </div>
+
+        <div class="nav-burger toggle-menu relative z-50">
+          <span></span>
+          <span></span>
+        </div>
+
+      </nav>
+
+    {% endblock %}
+
+  </div>
+</header> #}
+
+<header class="section header-main header-unpin font-body z-50 anim-open-sesame" style="transform: translateZ(200px)">
+  <div class="container">
+
+    {% block header %}
+
+      {# {% set query = craft.globalSets().handle('header') %}
+      {% set headerEntry = query.one() %} #}
+
+      <nav id="nav-main" class="nav-main flex justify-between items-center" role="navigation">
+        <a class="close-menu" href="{{ siteUrl }}">
+        <div class="hidden md:block font-medium anim-logo">
+          <span class="float-left">fff</span>
+          <span class="anim-logo-item left">u</span>
+          <span class="anim-logo-item left">n</span>
+          <span class="anim-logo-item left">c</span>
+          <span class="anim-logo-item left">t</span>
+          <span class="anim-logo-item left">i</span>
+          <span class="anim-logo-item left">o</span>
+          <span class="anim-logo-item left">n</span>
+          <span class="float-left">.s</span>
+          <span class="anim-logo-item right">t</span>
+          <span class="anim-logo-item right">u</span>
+          <span class="anim-logo-item right">d</span>
+          <span class="anim-logo-item right">i</span>
+          <span class="anim-logo-item right">o</span>
+          {# <a class="hidden md:block" href="{{ siteUrl }}">fffunction.studio</a> #}
+        </div>
+        <div class="block md:hidden font-medium">fff.s</div>
+        </a>
+        
+        <div class="logo-calc fixed " style="top: -100vh">
+        <div class="font-medium anim-logo-calc">
+          <span class="float-left">fff</span>
+          <span class="anim-logo anim-logo-calc-item left">u</span>
+          <span class="anim-logo anim-logo-calc-item left">n</span>
+          <span class="anim-logo anim-logo-calc-item left">c</span>
+          <span class="anim-logo anim-logo-calc-item left">t</span>
+          <span class="anim-logo anim-logo-calc-item left">i</span>
+          <span class="anim-logo anim-logo-calc-item left">o</span>
+          <span class="anim-logo anim-logo-calc-item left">n</span>
+          <span class="float-left">.s</span>
+          <span class="anim-logo anim-logo-calc-item right">t</span>
+          <span class="anim-logo anim-logo-calc-item right">u</span>
+          <span class="anim-logo anim-logo-calc-item right">d</span>
+          <span class="anim-logo anim-logo-calc-item right">i</span>
+          <span class="anim-logo anim-logo-calc-item right">o</span>
+          {# <a class="hidden md:block" href="{{ siteUrl }}">fffunction.studio</a> #}
+        </div>
+        </div>
+
+        <div class="nav-menu text-regular z-40">
+          {% include "layout/nav.twig" %}
+        </div>
+
+        <div class="nav-burger toggle-menu relative z-50">
+          <span></span>
+          <span></span>
+        </div>
+
+      </nav>
+
+    {% endblock %}
+
+  </div>
+</header>
+
+<nav id="nav-overlay" class="nav-overlay font-h2 z-40" style="transform: translateZ(100px)">
+  {% include "layout/nav.twig" %}
+</nav>

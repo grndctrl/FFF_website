@@ -1,0 +1,41 @@
+{% if sectionClass is not defined %}
+	{% set sectionClass = [""] %}
+{% endif %}
+
+{% if text is not defined %}
+	{% set text = "Call to action button" %}
+{% endif %}
+
+{% if buttonLabel is not defined %}
+	{% set buttonLabel = "Get in touch" %}
+{% endif %}
+
+{% if buttonLink is not defined %}
+	{% set buttonLink = "" %}
+{% endif %}
+
+{% if buttonLink == "" %}
+	{% set buttonLink = "mailto:hello@fffunction.studio" %}
+{% endif %}
+
+<section class="section-md {{ sectionClass|join(' ') }}">
+	<div class="container">
+
+		<div class="row font-h2 font-medium">
+			<div class="col w-9/12 lg:ml-2/12 lg:w-5/12">
+				{{ cost }}
+			</div>
+			<div class="col w-3/12 text-black text-right">
+				<a href="mailto:{{ email }}?subject={{ subject }}">
+					(buy)
+				</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col lg:ml-2/12 w-9/12 lg:w-4/12 font-body">
+				{{ text|nl2br }}
+			</div>
+		</div>
+
+	</div>
+</section>

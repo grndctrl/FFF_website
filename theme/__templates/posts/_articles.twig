@@ -3,7 +3,7 @@
 {% extends "core/base.twig" %}
 
 {% block main %}
-	<svg style="display: none;">x</svg>
+
 	<div class="bg-white text-black min-h-screen">
 
 		<div class="header-offset"></div>
@@ -70,10 +70,6 @@
 
 		{% endfor %}
 
-		{% include "blocks/blocks.twig" with {
-      blocks: entry.blocks.all()
-    } %}
-
 		{% set articles = craft.entries.section("articles").all() %}
 
 		{% set index = 0 %}
@@ -97,7 +93,7 @@
 					<div class="col w-full lg:w-8/12 mx-auto">
 						<p class="font-h2">
 							<a href="{{ articles[indexNext].url }}" class="anim-underline-in">
-								Next article
+								Volgend artikel
 							</a>
 						</p>
 					</div>

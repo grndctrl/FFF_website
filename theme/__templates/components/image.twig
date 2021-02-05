@@ -1,0 +1,64 @@
+{% if image is defined %}
+  {% if orientation is not defined %}
+    {% set orientation = image.assetOrientation.value %}
+  {% endif %}
+
+  {% set transforms = [
+    {
+      handle: "sm",
+      width: 400
+    }, {
+      handle: "md",
+      width: 800
+    }, {
+      handle: "lg",
+      width: 1600
+    }, {
+      handle: "fw",
+      width: 2560
+    }
+  ] %}
+  {% set srcset = [] %}
+
+  {# if output width is smaller than or equal to the original image width #}
+  {% for transform in transforms %}
+    {% if transform.width <= image.width %}
+      {% set srcset = srcset | merge([siteUrl ~ image.url(transform.handle) ~ " " ~ transform.width ~ "w"]) %}
+    {% endif %}
+  {% endfor %}
+
+  {# output srcset #}
+
+  <figure class="{% if figureClass is defined %}{{ figureClass }} {% endif %} {% if orientation is defined %}{{ orientation }}{% else %}landscape{% endif %}">
+    <img src="{{ siteUrl }}{{ image.url() }}" srcset="{{ srcset|join(', ') }}" sizes="50vw" alt="">
+  </figure>
+
+{% else %}
+
+  {% if figureClass is defined %}
+  {% else %} 
+    {% set figureClass = 'margin' %}
+  {% endif %}
+
+  <pre>
+  {{ figureClass }}
+  </pre>
+
+    {% if figureClass == "full" %}
+      
+      <figure class="{{ figureClass }} {% if orientation is defined %}{{ orientation }}{% else %}landscape{% endif %} bg-grey">
+          <div class="container">
+            <div class="figure-sizer"></div>
+          </div>
+      </figure>
+
+    {% else %}
+
+       <figure class="{{ figureClass }} {% if orientation is defined %}{{ orientation }}{% else %}landscape{% endif %} bg-grey">
+          <div class="figure-sizer"></div>
+      </figure>
+        
+    {% endif %}
+
+
+{% endif %}

@@ -1,0 +1,63 @@
+{% if sectionClass is not defined %}
+  {% set sectionClass = [''] %}
+{% endif %}
+
+<section class="section-sm {{ sectionClass|join(' ') }}">
+
+  {% if size is defined %}
+
+    {% if size == "full" %}
+
+      <div class="row">
+        <div class="col w-full">
+
+          {% include "components/figure.twig" with {
+            size: size
+          } %}
+
+        </div>
+      </div>
+
+    {% elseif size == 'margin' %}
+
+      <div class="container">
+        <div class="row">
+          <div class="col w-10/12 mx-auto">
+
+            {% include "components/figure.twig" with {
+              size: size
+            } %}
+
+          </div>
+        </div>
+      </div>
+
+    {% else %}
+
+      <div class="container">
+        <div class="row">
+          <div class="col w-full">
+
+            {% include "components/figure.twig" %}
+
+          </div>
+        </div>
+      </div>
+
+    {% endif %}
+
+  {% else %}
+
+    <div class="container">
+      <div class="row">
+        <div class="col w-full">
+
+          {% include "components/figure.twig" %}
+
+        </div>
+      </div>
+    </div>
+
+  {% endif %}
+
+</section>

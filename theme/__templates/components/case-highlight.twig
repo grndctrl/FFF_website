@@ -1,0 +1,38 @@
+{% if sectionClass is not defined %}
+  {% set sectionClass = [''] %}
+{% endif %}
+
+<section class="section-md {{ sectionClass|join(' ') }}">
+  <div class="container ">
+
+    <div class="row anim-underline-in-trigger pb-3 md:pb-6">
+      <div class="col w-full fw:w-10/12 mx-auto">
+        <a href="{{ link }}" class="">
+
+              {% include "components/figure.twig" with {
+                size : "case",
+                ratio: 'strict',
+                orientation: 'landscape',
+                image: image
+              } %}
+            
+        </a>
+      </div>
+    </div>
+    <div class="row md:pb-16">
+      <div class="col w-full md:w-6/12 fw:w-5/12 fw:ml-1/12">
+        <h3 class="font-highlight font-medium">
+          <a href="{{ link }}" class="anim-underline-in anim-underline-in-target">
+            {{ text }}
+          </a>
+        </h3>
+      </div>
+      <div class="col w-full md:w-6/12 fw:w-5/12">
+        <p class="font-highlight">
+          {{ subtext }}
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>

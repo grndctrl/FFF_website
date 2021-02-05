@@ -6,13 +6,13 @@
 
 	{% if item.backgroundColor == "white" %}
 
-		{% set sectionClass = ['anim-move-in', 'bg-white', 'text-black'] %}
+		{% set sectionClass = ['anim-move-in', 'bg-white', 'text-black', 'fff_block'] %}
 
 	{% elseif item.backgroundColor == 'black' %}
-		{% set sectionClass = ['anim-move-in', 'bg-black', 'text-white'] %}
+		{% set sectionClass = ['anim-move-in', 'bg-black', 'text-white', 'fff_block'] %}
 	{% else %}
 
-		{% set sectionClass = ['anim-move-in'] %}
+		{% set sectionClass = ['anim-move-in', 'fff_block'] %}
 	{% endif %}
 
 	{% if loop.index0 < 1 %}
@@ -25,6 +25,7 @@
           text: item.text,
           buttonLabel: item.buttonLabel,
           buttonLink: item.buttonLink,
+          openInNewTab: item.openInNewTab,
           sectionClass: sectionClass
         } %}
 
@@ -68,6 +69,7 @@
 
 		{% include "blocks/text-thin-paragraph.twig" with {
           text: item.text,
+          subtitle: item.subtitle,
           sectionClass: sectionClass
         } %}
 

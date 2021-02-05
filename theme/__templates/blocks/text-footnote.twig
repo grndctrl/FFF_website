@@ -1,0 +1,21 @@
+{% if sectionClass is not defined %}
+  {% set sectionClass = [""] %}
+{% endif %}
+
+{% if text is not defined %}
+  {% set text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." %}
+{% endif %}
+
+<section class="section-md mt-0 {{ sectionClass|join(' ') }}">
+  <div class="container">
+
+    <div class="row">
+      <div class="col w-11/12 ml-1/12 md:w-5/12 md:ml-6/12 lg:ml-8/12 lg:w-3/12 fw:w-3/12 fw:ml-7/12">
+        <p class="font-sub text-grey">
+          {{ text }}
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,19 @@
+{% if sectionClass is not defined %}
+  {% set sectionClass = [''] %}
+{% endif %}
+
+<section class="section-sm {{ sectionClass|join(' ') }}">
+
+    <div class="container">
+      <div class="row">
+        <div class="col w-full">
+
+          {% include "components/figure.twig" with {
+            size: 'square'
+          } %}
+
+        </div>
+      </div>
+    </div>
+
+</section>

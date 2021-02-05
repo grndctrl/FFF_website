@@ -1,40 +1,44 @@
 {% if sectionClass is not defined %}
-  {% set sectionClass = [""] %}
+	{% set sectionClass = [""] %}
 {% endif %}
 
 {% if text is not defined %}
-  {% set text = "Call to action button" %}
+	{% set text = "Call to action button" %}
 {% endif %}
 
 {% if buttonLabel is not defined %}
-  {% set buttonLabel = "Get in touch" %}
+	{% set buttonLabel = "Get in touch" %}
 {% endif %}
 
 {% if buttonLink is not defined %}
-  {% set buttonLink = "" %}
+	{% set buttonLink = "" %}
+{% endif %}
+
+{% if openInNewTab is not defined %}
+	{% set openInNewTab = false %}
 {% endif %}
 
 {% if buttonLink == "" %}
-  {% set buttonLink = "mailto:hello@fffunction.studio" %}
+	{% set buttonLink = "mailto:hello@fffunction.studio" %}
 {% endif %}
 
 <section class="section-lg {{ sectionClass|join(' ') }}">
-  <div class="container">
+	<div class="container">
 
-    <div class="row">
-      <div class="col w-full lg:w-8/12 lg:mx-2/12 fw:w-6/12 fw:mx-3/12">
-        <p class="font-h2 font-medium text-center" style="margin-bottom: 0.8em">
-          {{ text|nl2br }}
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col w-full flex justify-center text-black">
-        <a href="{{ buttonLink }}" class="button cta-button block bg-white text-black border-black hover:border-white hover:bg-black hover:text-white border rounded-full font-body"  style="padding: 0.25em 0.75em 0.35em 0.75em">
-          {{ buttonLabel }}
-        </a>
-      </div>
-    </div>
+		<div class="row">
+			<div class="col w-full lg:w-8/12 lg:mx-2/12 fw:w-6/12 fw:mx-3/12">
+				<p class="font-h2 font-medium text-center" style="margin-bottom: 0.8em">
+					{{ text|nl2br }}
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col w-full flex justify-center text-black">
+				<a href="{{ buttonLink }}" {% if openInNewTab == true %} target="_blank" {% endif %} class="button cta-button block bg-white text-black border-black hover:border-white hover:bg-black hover:text-white border rounded-full font-body" style="padding: 0.25em 0.75em 0.35em 0.75em">
+					{{ buttonLabel }}
+				</a>
+			</div>
+		</div>
 
-  </div>
+	</div>
 </section>

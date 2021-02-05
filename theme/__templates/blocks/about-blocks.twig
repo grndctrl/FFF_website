@@ -29,6 +29,7 @@
 		{% endif %}
 	{% endif %}
 
+
 	{% if item.type == "headerImage" %}
 
 		{% include "blocks/image-header.twig" with {
@@ -71,7 +72,6 @@
           text: item.text,
           buttonLabel: item.buttonLabel,
           buttonLink: item.buttonLink,
-          openInNewTab: item.openInNewTab,
           sectionClass: sectionClass
         } %}
 

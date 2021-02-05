@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html class="bg-black" lang="en">
+	<head>
+		{% include "core/metadata.twig" %}
+
+		{% hook "seo" %}
+	</head>
+
+	<body class="bg-black text-white">
+		<div class="barba-wipe z-40"></div>
+
+		{% include "components/cursor.twig" %}
+
+		{% block header %}
+			{% include "layout/header.twig" %}
+		{% endblock %}
+
+		<div class="main-wrapper z-10" data-barba="wrapper">
+			<main class="main" data-barba="container" data-barba-namespace=""> {% block main %}{% endblock %}{% block scripts %}{% endblock %}
+				</main>
+			</div>
+
+			{% block footer %}
+				{% include "layout/footer.twig" %}
+			{% endblock %}
+
+			<script src="{{ siteUrl }}/dist/js/common.js"></script>
+			<script src="{{ siteUrl }}/dist/js/main.js"></script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148565228-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+function gtag() {
+dataLayer.push(arguments);
+}
+gtag('js', new Date());
+
+gtag('config', 'UA-148565228-1');
+			</script>
+		</body>
+	</html>

@@ -35,3 +35,50 @@
     max-width: calc(100vw / 1600 * 960);
   }
 }
+
+$anim-height: 1.25em;
+
+.anim-hero-link {
+  .wrapper {
+    position: relative;
+    overflow: hidden;
+    height: $anim-height;
+    width: 100%;
+
+    .about-part {
+      transition: transform 200ms ease;
+      position: absolute;
+      height: $anim-height;
+      width: 100%;
+      top: 0;
+      left: 0;
+    }
+
+    .fffunction-part {
+      transition: transform 200ms ease;
+      position: absolute;
+      height: $anim-height;
+      width: 100%;
+      top: $anim-height;
+      left: 0;
+    }
+
+    .studio-part {
+      position: absolute;
+      height: $anim-height;
+      width: 100%;
+      top: 0;
+      left: 4.7em;
+    }
+
+    &:hover {
+      .about-part {
+        transform: translateY(-$anim-height);
+      }
+
+      .fffunction-part {
+        transform: translateY(-$anim-height);
+      }
+    }
+  }
+}

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "browser-sync": "browser-sync start --proxy localhost:8080",
-    "serve": "docker kill $(docker ps -q); docker-compose up -d",
+    "serve": "docker kill $(docker ps -q); docker-compose up",
     "stop": "docker-compose down --volumes",
     "craft-compose": "docker-compose exec web composer create-project craftcms/craft /var/www/html/private/craft",
     "craft-plugins": "docker-compose exec web composer require ether/seo --working-dir=/var/www/html/private/craft",

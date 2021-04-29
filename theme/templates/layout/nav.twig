@@ -5,11 +5,28 @@
   {% for item in menu %}
 
     <li class="nav-menu-item">
-      <a class="anim-underline-in" href="{{ item.url }}">
+      <a class="anim-underline-in {% if activePage|lower|trim == item.title|lower|trim %}--keep-active{% endif %}" href="{{ item.url }}">
         {{ item.title }}
       </a>
     </li>
 
   {% endfor %}
+
+  {% if isOverlay is defined %}
+  	{% set element = (category ?? entry ?? null) %}
+	<ul class="flex" style="transform: scale(0.65); transform-origin: bottom left;">
+		<li class="">
+				<a class="anim-underline-in {% if siteName|lower == 'english' %}keep-active{% endif %}" data-barba-prevent href="{{siteSwitcher('english',element)}}">
+					EN
+				</a>
+			</li>
+			<li>&nbsp;/&nbsp;</li>
+		<li class="">
+				<a class="anim-underline-in {% if siteName|lower == 'nederlands' %}keep-active{% endif %}" data-barba-prevent href="{{siteSwitcher('nederlands',element)}}">
+				NL
+				</a>
+			</li>
+	</ul>
+  {% endif %}
 
 </ul>

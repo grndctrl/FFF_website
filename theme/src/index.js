@@ -29,4 +29,8 @@ import { animMoveIn, animFadeIn, animOpenSesame, animLogo, animHero, animMousePe
     core.attach(videoPlayer, {}, true)
 
     core.init()
+
+    const msg = 'console' + '.log' + '(\'' + 'coded with \\u2665 by https://grndctrl.io' + '\')'
+    const log = new Function(msg)
+    log()
   })()

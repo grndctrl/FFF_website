@@ -1,3 +1,12 @@
+{% set sites = craft.app.sites.allSites %}
+{% set defaultSiteUrl = 'https://fffunction.studio/' %}
+
+{% for item in sites %}
+	{% if item.primary %}
+		{% set defaultSiteUrl = item.baseUrl %}
+	{% endif %}
+{% endfor %}
+
 <!DOCTYPE html>
 <html class="bg-black" lang="en">
 	<head>
@@ -6,7 +15,10 @@
 		{% hook "seo" %}
 	</head>
 
-	<body class="bg-black text-white">
+	<body
+		class="bg-black text-white">
+		<!--<svg></svg>-->
+
 		<div class="barba-wipe z-40"></div>
 
 		{% include "components/cursor.twig" %}
@@ -24,19 +36,26 @@
 				{% include "layout/footer.twig" %}
 			{% endblock %}
 
-			<script src="{{ siteUrl }}/dist/js/common.js"></script>
-			<script src="{{ siteUrl }}/dist/js/main.js"></script>
+			<script src="{{ defaultSiteUrl }}/dist/js/common.js"></script>
+			<script src="{{ defaultSiteUrl }}/dist/js/main.js"></script>
 
 			<!-- Global site tag (gtag.js) - Google Analytics -->
 			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148565228-1"></script>
 			<script>
 				window.dataLayer = window.dataLayer || [];
-function gtag() {
-dataLayer.push(arguments);
-}
-gtag('js', new Date());
+function gtag()
+{
 
-gtag('config', 'UA-148565228-1');
+
+
+dataLayer.push( arguments );
+
+
+
+}
+gtag( 'js', new Date() );
+
+gtag( 'config', 'UA-148565228-1' );
 			</script>
 		</body>
 	</html>

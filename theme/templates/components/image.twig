@@ -1,9 +1,9 @@
 {% if image is defined %}
-  {% if orientation is not defined %}
-    {% set orientation = image.assetOrientation.value %}
-  {% endif %}
+	{% if orientation is not defined %}
+		{% set orientation = image.assetOrientation.value %}
+	{% endif %}
 
-  {% set transforms = [
+	{% set transforms = [
     {
       handle: "sm",
       width: 400
@@ -18,47 +18,46 @@
       width: 2560
     }
   ] %}
-  {% set srcset = [] %}
+	{% set srcset = [] %}
 
-  {# if output width is smaller than or equal to the original image width #}
-  {% for transform in transforms %}
-    {% if transform.width <= image.width %}
-      {% set srcset = srcset | merge([siteUrl ~ image.url(transform.handle) ~ " " ~ transform.width ~ "w"]) %}
-    {% endif %}
-  {% endfor %}
+	{# if output width is smaller than or equal to the original image width #}
+	{% for transform in transforms %}
+		{% if transform.width <= image.width %}
+			{% set srcset = srcset | merge([siteUrl ~ image.url(transform.handle) ~ " " ~ transform.width ~ "w"]) %}
+		{% endif %}
+	{% endfor %}
 
-  {# output srcset #}
+	{# output srcset #}
 
-  <figure class="{% if figureClass is defined %}{{ figureClass }} {% endif %} {% if orientation is defined %}{{ orientation }}{% else %}landscape{% endif %}">
-    <img src="{{ siteUrl }}{{ image.url() }}" srcset="{{ srcset|join(', ') }}" sizes="50vw" alt="">
-  </figure>
+	<figure class="{% if figureClass is defined %}{{ figureClass }} {% endif %} {% if orientation is defined %}{{ orientation }}{% else %}landscape{% endif %}">
+		<img src="{{ defaultSiteUrl }}{{ image.url() }}" srcset="{{ srcset|join(', ') }}" sizes="50vw" alt="">
+	</figure>
 
 {% else %}
 
-  {% if figureClass is defined %}
-  {% else %} 
-    {% set figureClass = 'margin' %}
-  {% endif %}
+	{% if figureClass is defined %}
+		{% else %}
+			{% set figureClass = 'margin' %}
+	{% endif %}
 
-  <pre>
+	<pre>
   {{ figureClass }}
   </pre>
 
-    {% if figureClass == "full" %}
-      
-      <figure class="{{ figureClass }} {% if orientation is defined %}{{ orientation }}{% else %}landscape{% endif %} bg-grey">
-          <div class="container">
-            <div class="figure-sizer"></div>
-          </div>
-      </figure>
+	{% if figureClass == "full" %}
 
-    {% else %}
+		<figure class="{{ figureClass }} {% if orientation is defined %}{{ orientation }}{% else %}landscape{% endif %} bg-grey">
+			<div class="container">
+				<div class="figure-sizer"></div>
+			</div>
+		</figure>
 
-       <figure class="{{ figureClass }} {% if orientation is defined %}{{ orientation }}{% else %}landscape{% endif %} bg-grey">
-          <div class="figure-sizer"></div>
-      </figure>
-        
-    {% endif %}
+	{% else %}
 
+		<figure class="{{ figureClass }} {% if orientation is defined %}{{ orientation }}{% else %}landscape{% endif %} bg-grey">
+			<div class="figure-sizer"></div>
+		</figure>
+
+	{% endif %}
 
 {% endif %}

@@ -6,7 +6,7 @@
 	{% set text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit' %}
 {% endif %}
 
-<section class="section-lg {{ sectionClass|join(' ') }}">
+<section class="section-lg {{ sectionClass|join(' ') }} about-services">
 	<div class="container">
 
 		<div class="anim-move-in">
@@ -24,7 +24,7 @@
 						<p class="font-h3 pb-4 lg:pb-6">
 							{{ item.header }}
 						</p>
-						<div class="font-body">
+						<div class="font-body about-services">
 							{{ item.text|nl2br }}
 						</div>
 					</div>

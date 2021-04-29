@@ -49,10 +49,6 @@
 
 	{# output srcset #}
 
-	{# <figure class="{{ size }} {{ ratio }} {% if orientation is defined %}{{ orientation }}{% else %}landscape{% endif %}">
-	    <img src="{{ siteUrl }}{{ image.url() }}" srcset="{{ srcset|join(', ') }}" sizes="50vw" alt="">
-	  </figure> #}
-
 	{% if size == "full" and ratio == "strict" %}
 
 		<figure class="{{ figureClass|join(' ') }} {{ size }} {{ ratio }} {% if orientation is defined %}{{ orientation }}{% else %}landscape{% endif %}">
@@ -61,10 +57,10 @@
 
 				{% if image.kind == "video" %}
 					<video loop muted playsinline>
-						<source src="{{ siteUrl }}{{ image.url }}" type="video/mp4">
+						<source src="{{ defaultSiteUrl }}{{ image.url }}" type="video/mp4">
 					</video>
 				{% else %}
-					<img src="{{ siteUrl }}{{ image.url() }}" alt="">
+					<img src="{{ defaultSiteUrl }}{{ image.url() }}" alt="">
 				{% endif %}
 
 			</div>
@@ -76,10 +72,10 @@
 			<div class="figure-sizer"></div>
 			{% if image.kind == "video" %}
 				<video loop muted playsinline>
-					<source src="{{ siteUrl }}{{ image.url }}" type="video/mp4">
+					<source src="{{ defaultSiteUrl }}{{ image.url }}" type="video/mp4">
 				</video>
 			{% else %}
-				<img src="{{ siteUrl }}{{ image.url() }}" alt="">
+				<img src="{{ defaultSiteUrl }}{{ image.url() }}" alt="">
 			{% endif %}
 
 		</figure>

@@ -10,18 +10,33 @@
 			{% set contactEntry = query.one() %}
 
 			<div class="row">
-				<div class="col w-full md:w-4/12 lg:w-3/12 pb-10 md:pb-12 font-body ">
+				<div class="col hidden md:block md:w-6/12 lg:w-4/12 pb-10 md:pb-12 font-body">
+					<ul>
+						{% for link in footerEntry.footerMenu.all() %}
+							<li>
+								<a href="{{ link.url }}" target="_blank" class="anim-underline-in">
+									{{ link.title }}
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+				<div class="col w-full md:w-6/12 lg:w-3/12 pb-10 md:pb-12 font-body flex flex-col justify-between">
+				<div class="flex-start">
 					<p>Adres</p>
 					<p class="text-grey">
 						{{ contactEntry.address|nl2br }}
 					</p>
-					<p class="pt-8">
+				</div>
+				<div class="flex-end">
+					<p class="">
 						<a target="_blank" href="{{ contactEntry.route }}" class="anim-underline-in">
 							Route
 						</a>
 					</p>
 				</div>
-				<div class="col w-full md:w-4/12  lg:w-3/12 pb-10 md:pb-12 font-body ">
+				</div>
+				<div class="col w-full md:w-6/12  lg:w-3/12 pb-10 md:pb-12 font-body ">
 					<p>Contact</p>
 					<ul class="text-grey">
 						<li>{{ contactEntry.phoneNumber }}</li>
@@ -34,7 +49,7 @@
 						</li>
 					</ul>
 				</div>
-				<div class="col w-full md:w-4/12 pb-10 md:pb-12 font-body ">
+				<div class="col w-full md:w-6/12  lg:w-2/12 pb-10 md:pb-12 font-body ">
 					<p>Social</p>
 					<ul class="text-grey">
 						{% for medium in footerEntry.socialMedia.all() %}
@@ -49,7 +64,7 @@
 				</div>
 			</div>
 
-			<p class="font-sub text-grey">
+			<p class="font-sub text-grey pt-16">
 				&copy;
 				{{ "now"|date("Y") }}
 				fffunction studio

@@ -1,9 +1,16 @@
 {# Default page #}
+{% set activePage = 'Page' %} 
 
 {% extends "core/base.twig" %}
 
 {% block main %}
-  <div class="bg-black text-white min-h-screen">
+	{% if entry.pageBlackWhite %}
+		{% set pageColor = 'bg-white text-black' %}
+	{% else %}
+		{% set pageColor = 'bg-black text-white' %}
+	{% endif %}
+
+  <div class="{{ pageColor }} min-h-screen">
 
     <div class="header-offset"></div>
     

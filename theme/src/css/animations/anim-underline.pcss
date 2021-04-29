@@ -5,7 +5,8 @@
   border-color: transparent;
   transition: border-color $short;
 
-  &.active {
+  &.active,
+  &.keep-active {
     border-color: $white;
     
     &.text-black {
@@ -19,19 +20,22 @@
 }
 
  .text-black {
-  .anim-underline-in.active {
+  .anim-underline-in.active,
+  .anim-underline-in.keep-active {
     border-color: $black;
   }
 }
 
 .text-grey {
-  .anim-underline-in.active {
+  .anim-underline-in.active,
+  .anim-underline-in.keep-active {
     border-color: $grey;
   }
 }
 
 .anim-underline-in-parent-trigger {
-  &.active .anim-underline-in {
+  &.active .anim-underline-in,
+  &.keep-active .anim-underline-in {
     border-color: $white;
   }
 }

@@ -16,9 +16,11 @@ class BarbaManager extends CoreModule {
             beforeLeave() {
               document.body.classList.remove('barba-enter')
               document.body.classList.add('barba-leave')
+              window.prevScrollY = window.currScrollY
+              window.currScrollY = window.scrollY
             },
 
-            beforeEnter() {
+            beforeEnter(data) {
               document.body.classList.add('barba-enter')
               document.body.classList.remove('barba-leave')
 
@@ -36,12 +38,20 @@ class BarbaManager extends CoreModule {
                   })
               })
 
-              window.scrollTo(0, 0)
+              if (data.trigger == 'back' || data.trigger == 'popstate') {
+                console.log('tick', data.trigger)
+                console.log(window.prevScrollY)
+                console.log(window.currScrollY)
+                window.scrollTo(0, window.prevScrollY)
+              } else {
+
+                window.scrollTo(0, 0)
+              }
 
               eventBus.$emit('barba-before-enter')
             },
 
-            afterEnter() {
+            afterEnter(data) {
               document.body.classList.remove('barba-enter')
               document.body.classList.remove('barba-leave')
             }
